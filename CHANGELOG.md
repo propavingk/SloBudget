@@ -6,3 +6,8 @@ Changelog, and the project uses semantic versioning.
 ## [Unreleased]
 
 ### Changed
+
+- Alert wording for the burn-rate windows is under review.
+
+## [1.0.1] - 2026-07-08
+
