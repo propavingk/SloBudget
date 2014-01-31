@@ -35,3 +35,8 @@ Changelog, and the project uses semantic versioning.
 ### Added
 
 - Alert thresholds for fast and slow burn windows.
+- Gap detection for missing samples.
+
+## [0.7.0] - 2020-06-15
+
+### Added
