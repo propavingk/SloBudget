@@ -20,3 +20,8 @@ Changelog, and the project uses semantic versioning.
 
 ### Added
 
+- Stable CLI contract for sli, burn, alerts, and version, exit codes 0/1/2.
+- Tests pin the window arithmetic at the edges.
+
+## [0.9.0] - 2023-10-09
+
