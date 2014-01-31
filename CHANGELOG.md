@@ -16,3 +16,7 @@ Changelog, and the project uses semantic versioning.
 - The burn rate for a gap window is now computed against the window length,
   not the whole sample range.
 
+## [1.0.0] - 2025-11-25
+
+### Added
+
