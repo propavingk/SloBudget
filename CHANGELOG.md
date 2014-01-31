@@ -40,3 +40,8 @@ Changelog, and the project uses semantic versioning.
 ## [0.7.0] - 2020-06-15
 
 ### Added
+
+- Objective parsing from the sli file header.
+- Error budget computation for rolling windows.
+
+## [0.6.0] - 2019-03-05
