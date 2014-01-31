@@ -30,3 +30,8 @@ Changelog, and the project uses semantic versioning.
 - Report renderer with the budget burndown view.
 - JSON output for pipeline use.
 
+## [0.8.0] - 2022-01-24
+
+### Added
+
+- Alert thresholds for fast and slow burn windows.
