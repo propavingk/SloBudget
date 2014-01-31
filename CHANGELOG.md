@@ -45,3 +45,8 @@ Changelog, and the project uses semantic versioning.
 - Error budget computation for rolling windows.
 
 ## [0.6.0] - 2019-03-05
+
+### Added
+
+- Sample SLI files for a healthy and a gap service.
+- Test suite covering the windows and the CLI.
