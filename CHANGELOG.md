@@ -25,3 +25,8 @@ Changelog, and the project uses semantic versioning.
 
 ## [0.9.0] - 2023-10-09
 
+### Added
+
+- Report renderer with the budget burndown view.
+- JSON output for pipeline use.
+
