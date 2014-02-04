@@ -64,3 +64,8 @@ Changelog, and the project uses semantic versioning.
 
 - SLI file reader with typed samples.
 
+## [0.3.0] - 2016-04-21
+
+### Added
+
+- Burn rate computation over a rolling window.
