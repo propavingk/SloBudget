@@ -59,3 +59,8 @@ Changelog, and the project uses semantic versioning.
 - CLI entry point with the burn command.
 
 ## [0.4.0] - 2017-05-09
+
+### Added
+
+- SLI file reader with typed samples.
+
