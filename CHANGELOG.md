@@ -54,3 +54,8 @@ Changelog, and the project uses semantic versioning.
 ## [0.5.0] - 2018-02-11
 
 ### Added
+
+- Report output grouped per service.
+- CLI entry point with the burn command.
+
+## [0.4.0] - 2017-05-09
