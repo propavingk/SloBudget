@@ -50,3 +50,7 @@ Changelog, and the project uses semantic versioning.
 
 - Sample SLI files for a healthy and a gap service.
 - Test suite covering the windows and the CLI.
+
+## [0.5.0] - 2018-02-11
+
+### Added
