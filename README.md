@@ -43,3 +43,16 @@ the team is free to ship. When the budget is gone, the objective is missed, and
 the sensible response is to stop shipping risk and stabilise.
 
 The hard questions are not the definition, they are the accounting. How much of
+the budget did last night's incident actually cost. At the current failure
+rate, how long until the budget is gone. Should the fast paging alert have
+fired, or only the slower ticket. SloBudget computes each of these from the
+recorded indicator series, and it is explicit about the assumptions each answer
+rests on.
+
+## Install and run
+
+The project uses a src layout with a console script entry point. You can run it
+without installing by putting the package on the path:
+
+```
+PYTHONPATH=src python -m slobudget version
