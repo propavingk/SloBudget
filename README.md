@@ -68,3 +68,16 @@ An editable install exposes the `slobudget` command directly:
 
 ```
 pip install -e .
+slobudget version
+```
+
+## The input format
+
+The indicator series is line oriented so it diffs cleanly and is easy to
+generate from a query. Each data row is a timestamp, a good count, and a total
+count:
+
+```
+2026-03-01T00:00:00Z,1999,2000
+2026-03-01T00:05:00Z,1998,2000
+```
