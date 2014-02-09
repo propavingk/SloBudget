@@ -56,3 +56,15 @@ without installing by putting the package on the path:
 
 ```
 PYTHONPATH=src python -m slobudget version
+```
+
+Captured output:
+
+```
+slobudget 0.1.0
+```
+
+An editable install exposes the `slobudget` command directly:
+
+```
+pip install -e .
