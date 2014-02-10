@@ -81,3 +81,16 @@ count:
 2026-03-01T00:00:00Z,1999,2000
 2026-03-01T00:05:00Z,1998,2000
 ```
+
+Rules the parser enforces:
+
+- The timestamp is ISO 8601. A trailing `Z` or an explicit offset is accepted,
+  and everything is normalised to UTC.
+- The timestamp marks the start of a fixed length interval. The interval length
+  is inferred from the first two rows and every later step must be a whole
+  multiple of it.
+- good and total are non negative integers, and good may not exceed total.
+- Blank lines and lines starting with `#` are ignored.
+- A step that is a multiple of the interval greater than one is recorded as a
+  gap, not an error. A step that is not a whole multiple is an error.
+
