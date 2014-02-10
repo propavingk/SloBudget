@@ -120,3 +120,15 @@ intervals with 2000 events per interval. It starts healthy, takes a sharp thirty
 minute incident at 11 percent failure, recovers over the next thirty minutes,
 then runs clean for two hours. It totals 96000 events with 1536 bad.
 
+Read the budget against a 98 percent objective over a 30 day window. The command
+and its verbatim output:
+
+```
+PYTHONPATH=src python -m slobudget budget samples/service-a.sli -o 98 -w 30d
+```
+
+```
+error budget report
+  objective            98.000% success
+  compliance window    30d
+  allowed failure      2.000%
