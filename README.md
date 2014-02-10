@@ -94,3 +94,16 @@ Rules the parser enforces:
 - A step that is a multiple of the interval greater than one is recorded as a
   gap, not an error. A step that is not a whole multiple is an error.
 
+Rows may arrive out of order. The parser sorts them by timestamp and rejects
+duplicates.
+
+## Commands
+
+| Command   | Purpose                                                        |
+| --------- | -------------------------------------------------------------- |
+| `budget`  | Compute the error budget and the fraction consumed so far.     |
+| `burn`    | Burn rates over several windows and a conditional projection.  |
+| `alerts`  | Evaluate the fast-burn and slow-burn multi window pair.        |
+| `version` | Print the package version.                                     |
+
+Every command that reads a series takes two options:
