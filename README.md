@@ -107,3 +107,16 @@ duplicates.
 | `version` | Print the package version.                                     |
 
 Every command that reads a series takes two options:
+
+| Option              | Default | Meaning                                       |
+| ------------------- | ------- | --------------------------------------------- |
+| `--objective`, `-o` | `99.9`  | Target success ratio: `99.9`, `99.9%`, `0.999`. |
+| `--window`, `-w`    | `30d`   | Compliance window: `30d`, `1w`, `24h`, `300`.   |
+
+## Worked example
+
+The repository ships `samples/service-a.sli`, a four hour series at five minute
+intervals with 2000 events per interval. It starts healthy, takes a sharp thirty
+minute incident at 11 percent failure, recovers over the next thirty minutes,
+then runs clean for two hours. It totals 96000 events with 1536 bad.
+
