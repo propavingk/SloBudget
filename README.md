@@ -145,3 +145,16 @@ error budget report
 The incident and the trickle of background failures together spent 80 percent
 of the budget. Twenty percent remains. The exit code is 0 because the budget is
 not exhausted.
+
+Now read the same series against the tighter 99.9 percent objective:
+
+```
+PYTHONPATH=src python -m slobudget budget samples/service-a.sli -o 99.9 -w 30d
+```
+
+```
+error budget report
+  objective            99.900% success
+  compliance window    30d
+  allowed failure      0.100%
+  total events         96000
