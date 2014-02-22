@@ -171,3 +171,16 @@ At 99.9 percent the budget is only 96 events, and the incident alone blew
 through it many times over. Consumption reads 1600 percent, remaining events is
 negative, and the exit code is 1.
 
+## The budget report field by field
+
+| Field              | Meaning                                                          |
+| ------------------ | ---------------------------------------------------------------- |
+| `objective`        | The target success ratio you passed, echoed as a percentage.     |
+| `compliance window`| The window you passed, rendered in the largest sensible units.   |
+| `allowed failure`  | 1 minus the objective, the share of events that may fail.        |
+| `total events`     | Sum of total across every recorded interval.                     |
+| `bad events`       | Sum of (total minus good) across every recorded interval.        |
+| `observed failure` | bad events divided by total events.                              |
+| `budget (events)`  | allowed failure ratio times total events.                        |
+| `budget consumed`  | bad events divided by budget events, as a percentage.            |
+| `budget remaining` | The complement, clamped at zero when the budget is overspent.    |
