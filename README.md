@@ -158,3 +158,16 @@ error budget report
   compliance window    30d
   allowed failure      0.100%
   total events         96000
+  bad events           1536
+  observed failure     1.600%
+  budget (events)      96.000
+  budget consumed      1600.000%
+  budget remaining     0.000%
+  remaining events     -1440.000
+  status               EXHAUSTED, budget is spent
+```
+
+At 99.9 percent the budget is only 96 events, and the incident alone blew
+through it many times over. Consumption reads 1600 percent, remaining events is
+negative, and the exit code is 1.
+
