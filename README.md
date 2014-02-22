@@ -209,3 +209,16 @@ burn rate report
   windows
     1h     rate    0.025  failure 0.050%  intervals 12
     6h     rate    0.800  failure 1.600%  intervals 48  (incomplete)
+    1d     rate    0.800  failure 1.600%  intervals 48  (incomplete)
+    all    rate    0.800  failure 1.600%  intervals 48
+  projection
+    burn rate          0.800
+    remaining events   384.000
+    time to exhaustion 1h
+    conditional        yes, projection assumes the current window rate continues unchanged
+```
+
+Two windows here are marked incomplete because the recorded series is only four
+hours long, shorter than the 6h and 1d windows asked for. The 1h window covers
+the most recent hour, which in this series is clean, so its rate is low. The
+projection uses the whole span and is labelled conditional: it assumes the
