@@ -132,3 +132,16 @@ error budget report
   objective            98.000% success
   compliance window    30d
   allowed failure      2.000%
+  total events         96000
+  bad events           1536
+  observed failure     1.600%
+  budget (events)      1920.000
+  budget consumed      80.000%
+  budget remaining     20.000%
+  remaining events     384.000
+  status               within budget
+```
+
+The incident and the trickle of background failures together spent 80 percent
+of the budget. Twenty percent remains. The exit code is 0 because the budget is
+not exhausted.
