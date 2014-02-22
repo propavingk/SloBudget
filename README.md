@@ -184,3 +184,16 @@ negative, and the exit code is 1.
 | `budget (events)`  | allowed failure ratio times total events.                        |
 | `budget consumed`  | bad events divided by budget events, as a percentage.            |
 | `budget remaining` | The complement, clamped at zero when the budget is overspent.    |
+| `remaining events` | budget events minus bad events, negative when overspent.         |
+| `status`           | Either within budget or EXHAUSTED.                               |
+
+A `note` line appears when the series has gaps, to make plain that the totals
+cover recorded data only and not the missing stretches.
+
+## Burn rate and the projection
+
+Burn rate normalises the observed failure ratio by the allowed failure ratio. A
+burn rate of 1 spends the budget exactly on pace to run out at the end of the
+compliance window. A rate of 10 spends it ten times as fast. The `burn` command
+reports the rate over several windows and then projects exhaustion from the
+whole recorded span:
