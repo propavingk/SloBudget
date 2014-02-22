@@ -197,3 +197,15 @@ burn rate of 1 spends the budget exactly on pace to run out at the end of the
 compliance window. A rate of 10 spends it ten times as fast. The `burn` command
 reports the rate over several windows and then projects exhaustion from the
 whole recorded span:
+
+```
+PYTHONPATH=src python -m slobudget burn samples/service-a.sli -o 98 -w 30d
+```
+
+```
+burn rate report
+  objective            98.000% success
+  allowed failure      2.000%
+  windows
+    1h     rate    0.025  failure 0.050%  intervals 12
+    6h     rate    0.800  failure 1.600%  intervals 48  (incomplete)
