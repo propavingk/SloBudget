@@ -222,3 +222,16 @@ Two windows here are marked incomplete because the recorded series is only four
 hours long, shorter than the 6h and 1d windows asked for. The 1h window covers
 the most recent hour, which in this series is clean, so its rate is low. The
 projection uses the whole span and is labelled conditional: it assumes the
+average rate over the whole span keeps up, which is a hypothetical, not a
+forecast.
+
+## Multi window alerts
+
+A single window burn rate alert has to choose between reacting fast and being
+stable. The multi window approach pairs a long window that sets sensitivity with
+a short window that confirms the burn is still happening now, which stops an
+alert firing for an incident that already recovered. SloBudget ships the
+standard pair calibrated for a 30 day window:
+
+| Policy      | Long window | Short window | Threshold | Budget burned in the long window |
+| ----------- | ----------- | ------------ | --------- | -------------------------------- |
