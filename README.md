@@ -235,3 +235,16 @@ standard pair calibrated for a 30 day window:
 
 | Policy      | Long window | Short window | Threshold | Budget burned in the long window |
 | ----------- | ----------- | ------------ | --------- | -------------------------------- |
+| `fast-burn` | 1h          | 5m           | 14.4      | 2 percent                        |
+| `slow-burn` | 6h          | 30m          | 6.0       | 5 percent                        |
+
+The thresholds are the workbook values for a 99.9 percent objective, so evaluate
+the pair at that objective:
+
+```
+PYTHONPATH=src python -m slobudget alerts samples/service-a.sli -o 99.9 -w 30d
+```
+
+```
+multi-window burn rate alerts
+  policy fast-burn
