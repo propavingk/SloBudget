@@ -248,3 +248,16 @@ PYTHONPATH=src python -m slobudget alerts samples/service-a.sli -o 99.9 -w 30d
 ```
 multi-window burn rate alerts
   policy fast-burn
+    long 3600s short 300s threshold 14.4 burns 2.000% of budget
+    result             FIRED
+    first fired at     2026-03-01T01:10:00+00:00
+    long window rate   18.750
+    short window rate  110.000
+  policy slow-burn
+    long 21600s short 1800s threshold 6.0 burns 5.000% of budget
+    result             skipped, series covers 14400s, shorter than the 21600s long window
+```
+
+The fast-burn condition first held at 01:10, ten minutes into the incident, once
+the one hour long window had filled with enough bad events to cross 14.4 while
+the five minute short window was at 110. The slow-burn policy is skipped because
