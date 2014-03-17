@@ -261,3 +261,15 @@ multi-window burn rate alerts
 The fast-burn condition first held at 01:10, ten minutes into the incident, once
 the one hour long window had filled with enough bad events to cross 14.4 while
 the five minute short window was at 110. The slow-burn policy is skipped because
+its six hour long window does not fit inside a four hour series, which the tool
+states rather than guessing. The exit code is 1 because a condition fired.
+
+## The burndown diagram
+
+![Error budget remaining for service-a against a 98 percent objective, plotted
+over the four hour window. The line holds near 100 percent for the first hour,
+drops sharply from 99.38 to 30.63 percent during the incident, tapers during
+recovery, and ends at 20.0 percent remaining.](docs/assets/budget-burndown.svg)
+
+The diagram is drawn from the real per-interval remaining budget for the 98
+percent run above. The final marker reads 20.0 percent, matching the budget
