@@ -273,3 +273,16 @@ recovery, and ends at 20.0 percent remaining.](docs/assets/budget-burndown.svg)
 
 The diagram is drawn from the real per-interval remaining budget for the 98
 percent run above. The final marker reads 20.0 percent, matching the budget
+report. The shaded band marks the incident intervals. Nothing in the image is a
+placeholder number.
+
+## Exit codes
+
+| Code | Meaning                                                             |
+| ---- | ------------------------------------------------------------------- |
+| 0    | Clean. Budget within limits and no alert fired.                     |
+| 1    | Findings. Budget exhausted (`budget`, `burn`) or an alert fired (`alerts`). |
+| 2    | Usage error. Bad arguments, a malformed series, or a missing file.  |
+
+This makes the tool usable as a CI gate. A `budget` step that exits 1 fails the
+pipeline when a release would push the service over its objective.
