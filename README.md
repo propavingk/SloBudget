@@ -286,3 +286,16 @@ placeholder number.
 
 This makes the tool usable as a CI gate. A `budget` step that exits 1 fails the
 pipeline when a release would push the service over its objective.
+
+## Mathematical honesty
+
+The projection is the one number here that reaches into the future, and the
+future is exactly what the recorded data cannot show. SloBudget treats the
+projection as conditional and refuses it outright in three cases:
+
+- The burn rate is zero. A service with no failures never exhausts its budget,
+  so there is no finite time to report.
+- The budget is already exhausted. There is nothing left to project.
+- The window is incomplete, either because it extends before the first recorded
+  interval or because a gap falls inside it. A rate computed from a
+  discontiguous or truncated sample is not a rate you should extrapolate.
