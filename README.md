@@ -299,3 +299,16 @@ projection as conditional and refuses it outright in three cases:
 - The window is incomplete, either because it extends before the first recorded
   interval or because a gap falls inside it. A rate computed from a
   discontiguous or truncated sample is not a rate you should extrapolate.
+
+The gap sample demonstrates the refusal. `samples/service-b-gap.sli` has a
+thirty minute hole in the middle:
+
+```
+PYTHONPATH=src python -m slobudget burn samples/service-b-gap.sli -o 99 -w 30d
+```
+
+```
+burn rate report
+  objective            99.000% success
+  allowed failure      1.000%
+  windows
