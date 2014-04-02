@@ -325,3 +325,15 @@ burn rate report
 The projection is refused and the exact gap is named. The budget for the same
 file still computes, with a note that the totals cover recorded data only.
 
+## Design decisions
+
+The budget denominator is the observed event count, not a projected traffic
+figure. The alternative, sizing the budget to expected traffic over the full
+window, needs a traffic forecast the tool does not have and cannot honestly
+invent. Sizing to observed events means the budget and the consumption are
+computed from the same denominator, which is what makes the consumed percentage
+meaningful. A consequence worth understanding: a short series against a long
+compliance window produces a small budget, so a serious incident reads as a very
+high consumption. That is not a bug, it is the honest statement that the
+incident was large relative to the traffic actually seen.
+
