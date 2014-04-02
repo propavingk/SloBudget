@@ -312,3 +312,16 @@ burn rate report
   objective            99.000% success
   allowed failure      1.000%
   windows
+    1h     rate    0.050  failure 0.050%  intervals 6  (incomplete)
+    6h     rate    0.050  failure 0.050%  intervals 12  (incomplete)
+    1d     rate    0.050  failure 0.050%  intervals 12  (incomplete)
+  projection
+    burn rate          0.050
+    remaining events   228.000
+    time to exhaustion refused
+    reason             window is incomplete: a gap between 2026-03-01T00:25:00+00:00 and 2026-03-01T01:00:00+00:00 falls inside the window
+```
+
+The projection is refused and the exact gap is named. The budget for the same
+file still computes, with a note that the totals cover recorded data only.
+
