@@ -337,3 +337,16 @@ compliance window produces a small budget, so a serious incident reads as a very
 high consumption. That is not a bug, it is the honest statement that the
 incident was large relative to the traffic actually seen.
 
+Burn rate is a ratio of ratios, not a rate of budget per unit time. Expressing
+burn as observed failure ratio over allowed failure ratio keeps it independent
+of traffic volume, so a rate of 14.4 means the same thing during a quiet hour
+and a busy one. The alternative, budget fraction burned per hour, folds traffic
+volume into the number and makes thresholds depend on load.
+
+Gaps are recorded, not filled. Interpolating across a gap would invent good and
+bad counts that were never measured. The parser records the gap and the burn
+layer treats any window containing one as incomplete, so the missing data
+degrades a projection into a refusal rather than a confident wrong answer.
+
+Time never enters the output except as data derived from the input timestamps.
+There is no reading of the wall clock, so a run today and a run next year over
