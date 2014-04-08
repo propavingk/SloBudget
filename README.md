@@ -376,3 +376,16 @@ slobudget/
     test_objective.py           objective and window parsing, budget maths
     test_burn.py                window stats, burn rate, projection refusals
     test_alerts.py              multi window firing and skip logic
+    test_cli.py                 end to end runs and exit codes
+  samples/
+    README.md                   how each fixture was constructed
+    service-a.sli               healthy, incident, recovery
+    service-b-gap.sli           a deliberate thirty minute gap
+  docs/assets/
+    logo.svg                    wordmark with a split at slo|budget
+    budget-burndown.svg         real remaining budget across the sample window
+```
+
+## Glossary
+
+| Term               | Definition                                                       |
