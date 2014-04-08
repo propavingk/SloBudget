@@ -363,3 +363,16 @@ slobudget/
   pyproject.toml                setuptools, src layout, console script
   .gitignore
   src/slobudget/
+    __init__.py                 package version
+    __main__.py                 python -m slobudget entry point
+    cli.py                      argparse subcommands and exit codes
+    sli.py                      parse the series, validate intervals, find gaps
+    objective.py                parse objective and window, derive the budget
+    burn.py                     burn rate over a window, conditional projection
+    alerts.py                   multi window fast-burn and slow-burn evaluation
+    report.py                   line oriented renderers for each command
+  tests/
+    test_sli.py                 parser, validation, gap detection
+    test_objective.py           objective and window parsing, budget maths
+    test_burn.py                window stats, burn rate, projection refusals
+    test_alerts.py              multi window firing and skip logic
