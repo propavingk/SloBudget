@@ -350,3 +350,16 @@ degrades a projection into a refusal rather than a confident wrong answer.
 
 Time never enters the output except as data derived from the input timestamps.
 There is no reading of the wall clock, so a run today and a run next year over
+the same file produce identical bytes. This is what lets the output be diffed in
+git and asserted in tests.
+
+## Repository layout
+
+```
+slobudget/
+  README.md                     this file
+  LICENSE                       MIT, holder "the slobudget authors"
+  CHANGELOG.md                  release notes
+  pyproject.toml                setuptools, src layout, console script
+  .gitignore
+  src/slobudget/
