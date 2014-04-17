@@ -389,3 +389,15 @@ slobudget/
 ## Glossary
 
 | Term               | Definition                                                       |
+| ------------------ | ---------------------------------------------------------------- |
+| SLI                | Service level indicator, the good over total ratio you measure.  |
+| SLO                | Service level objective, the target the indicator must meet.     |
+| Error budget       | The allowed failures over the window, 1 minus the objective.     |
+| Compliance window  | The span over which the objective is measured, for example 30d.  |
+| Burn rate          | Observed failure ratio divided by the allowed failure ratio.     |
+| Fast burn          | A high burn rate over a short long-window, page worthy.          |
+| Slow burn          | A lower burn rate over a longer long-window, ticket worthy.      |
+| Interval           | One recorded step of the indicator series.                       |
+| Gap                | One or more interval slots with no recorded data.                |
+
+## Verification
