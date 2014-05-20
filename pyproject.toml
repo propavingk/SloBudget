@@ -5,3 +5,4 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "slobudget"
 version = "1.0.1"
+description = "Error budget accounting for service level objectives."
