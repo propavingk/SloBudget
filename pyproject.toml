@@ -8,3 +8,5 @@ version = "1.0.1"
 description = "Error budget accounting for service level objectives."
 readme = "README.md"
 requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "SloBudget contributors" }]
