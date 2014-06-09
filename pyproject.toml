@@ -10,3 +10,5 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "SloBudget contributors" }]
+keywords = ["sre", "slo", "error-budget", "burn-rate", "observability"]
+classifiers = [
