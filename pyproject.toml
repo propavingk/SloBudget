@@ -18,3 +18,5 @@ classifiers = [
 ]
 
 [project.scripts]
+slobudget = "slobudget.cli:main"
+
