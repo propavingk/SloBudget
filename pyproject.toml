@@ -20,3 +20,5 @@ classifiers = [
 [project.scripts]
 slobudget = "slobudget.cli:main"
 
+[tool.setuptools.packages.find]
+where = ["src"]
