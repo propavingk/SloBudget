@@ -17,3 +17,12 @@ Callers must treat a projection as conditional on the rate holding.
 """
 
 from __future__ import annotations
+
+from dataclasses import dataclass
+from datetime import timedelta
+
+from .objective import Objective
+from .sli import Series
+
+
+class BurnError(ValueError):
