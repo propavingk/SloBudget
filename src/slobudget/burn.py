@@ -35,3 +35,12 @@ class WindowStats:
 
     intervals is how many recorded intervals fell in the window. good, total
     and bad are the summed counts. complete is False when the window asked for
+    more time than the recorded data covers, or a gap sits inside it.
+    """
+
+    seconds: int
+    intervals: int
+    good: int
+    total: int
+    bad: int
+    complete: bool
