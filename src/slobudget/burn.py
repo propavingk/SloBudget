@@ -44,3 +44,12 @@ class WindowStats:
     total: int
     bad: int
     complete: bool
+    reason: str
+
+    @property
+    def failure_ratio(self) -> float:
+        if self.total == 0:
+            return 0.0
+        return self.bad / self.total
+
+
