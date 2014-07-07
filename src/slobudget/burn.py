@@ -53,3 +53,11 @@ class WindowStats:
         return self.bad / self.total
 
 
+def window_stats(series: Series, window_seconds: int) -> WindowStats:
+    """Sum the tail of the series covering the most recent window_seconds.
+
+    The window is measured back from the end of the last recorded interval.
+    Completeness is reported, not enforced, so callers can decide.
+    """
+    if window_seconds <= 0:
+        raise BurnError("window must be positive")
