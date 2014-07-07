@@ -26,3 +26,12 @@ from .sli import Series
 
 
 class BurnError(ValueError):
+    """Raised when a burn rate or projection cannot be computed honestly."""
+
+
+@dataclass(frozen=True)
+class WindowStats:
+    """Aggregated counts over the tail window of a series.
+
+    intervals is how many recorded intervals fell in the window. good, total
+    and bad are the summed counts. complete is False when the window asked for
