@@ -61,3 +61,12 @@ def window_stats(series: Series, window_seconds: int) -> WindowStats:
     """
     if window_seconds <= 0:
         raise BurnError("window must be positive")
+    if not series.intervals:
+        raise BurnError("series has no intervals")
+
+    end = series.intervals[-1].start + timedelta(seconds=series.interval_seconds)
+    start_cut = end - timedelta(seconds=window_seconds)
+
+    good = total = bad = count = 0
+    for interval in series.intervals:
+        if interval.start >= start_cut:
