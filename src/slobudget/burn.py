@@ -70,3 +70,12 @@ def window_stats(series: Series, window_seconds: int) -> WindowStats:
     good = total = bad = count = 0
     for interval in series.intervals:
         if interval.start >= start_cut:
+            good += interval.good
+            total += interval.total
+            bad += interval.bad
+            count += 1
+
+    complete = True
+    reason = "window fully covered by contiguous data"
+
+    covered_start = series.intervals[0].start
