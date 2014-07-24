@@ -88,3 +88,12 @@ def window_stats(series: Series, window_seconds: int) -> WindowStats:
     else:
         for gap in series.gaps:
             # A gap counts if any missing slot lies at or after the window start.
+            if gap.before > start_cut and gap.after >= start_cut - timedelta(
+                seconds=series.interval_seconds
+            ):
+                complete = False
+                reason = (
+                    f"a gap between {gap.after.isoformat()} and "
+                    f"{gap.before.isoformat()} falls inside the window"
+                )
+                break
