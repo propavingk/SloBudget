@@ -79,3 +79,12 @@ def window_stats(series: Series, window_seconds: int) -> WindowStats:
     reason = "window fully covered by contiguous data"
 
     covered_start = series.intervals[0].start
+    if start_cut < covered_start:
+        complete = False
+        reason = (
+            "window extends before the first recorded interval, "
+            "so the rate is computed from less data than requested"
+        )
+    else:
+        for gap in series.gaps:
+            # A gap counts if any missing slot lies at or after the window start.
