@@ -106,3 +106,12 @@ def window_stats(series: Series, window_seconds: int) -> WindowStats:
         bad=bad,
         complete=complete,
         reason=reason,
+    )
+
+
+def burn_rate(objective: Objective, stats: WindowStats) -> float:
+    """Burn rate for a window: observed failure ratio over allowed failure ratio.
+
+    A rate of 1 means the window spends budget exactly on pace for the
+    compliance window. Zero observed failures give a rate of zero.
+    """
