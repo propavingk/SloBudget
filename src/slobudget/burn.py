@@ -97,3 +97,12 @@ def window_stats(series: Series, window_seconds: int) -> WindowStats:
                     f"{gap.before.isoformat()} falls inside the window"
                 )
                 break
+
+    return WindowStats(
+        seconds=window_seconds,
+        intervals=count,
+        good=good,
+        total=total,
+        bad=bad,
+        complete=complete,
+        reason=reason,
