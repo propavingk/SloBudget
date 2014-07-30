@@ -115,3 +115,12 @@ def burn_rate(objective: Objective, stats: WindowStats) -> float:
     A rate of 1 means the window spends budget exactly on pace for the
     compliance window. Zero observed failures give a rate of zero.
     """
+    allowed = objective.allowed_failure_ratio
+    if allowed <= 0.0:
+        raise BurnError("objective allows no failures, burn rate is undefined")
+    return stats.failure_ratio / allowed
+
+
+@dataclass(frozen=True)
+class Projection:
+    """A conditional projection of time to budget exhaustion.
