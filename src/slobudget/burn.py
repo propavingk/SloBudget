@@ -124,3 +124,11 @@ def burn_rate(objective: Objective, stats: WindowStats) -> float:
 @dataclass(frozen=True)
 class Projection:
     """A conditional projection of time to budget exhaustion.
+
+    can_project is False when the rate is zero or the window is incomplete, and
+    then seconds_to_exhaustion is None and reason explains the refusal. When
+    can_project is True the projection assumes the current rate holds, which is
+    stated in conditional wording by the report layer.
+    """
+
+    can_project: bool
