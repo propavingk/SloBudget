@@ -132,3 +132,12 @@ class Projection:
     """
 
     can_project: bool
+    burn_rate: float
+    remaining_events: float
+    seconds_to_exhaustion: float | None
+    reason: str
+
+
+def project_exhaustion(
+    objective: Objective,
+    stats: WindowStats,
