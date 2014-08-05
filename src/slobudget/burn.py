@@ -141,3 +141,12 @@ class Projection:
 def project_exhaustion(
     objective: Objective,
     stats: WindowStats,
+    remaining_events: float,
+) -> Projection:
+    """Project when the remaining budget runs out if the window rate continues.
+
+    Refuses to project on a zero burn rate or an incomplete window. The rate of
+    bad events per second comes from the window: bad / window_seconds.
+    """
+    rate = burn_rate(objective, stats)
+
