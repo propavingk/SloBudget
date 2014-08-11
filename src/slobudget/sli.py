@@ -26,3 +26,12 @@ class SliError(ValueError):
 @dataclass(frozen=True)
 class Interval:
     """One measured interval of the indicator series.
+
+    start is a timezone aware UTC datetime marking the interval start.
+    good is the count of good events, total is the count of all events.
+    """
+
+    start: datetime
+    good: int
+    total: int
+
