@@ -17,3 +17,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime, timezone
+
+
+class SliError(ValueError):
+    """Raised when the indicator series cannot be parsed or is invalid."""
+
+
+@dataclass(frozen=True)
+class Interval:
+    """One measured interval of the indicator series.
