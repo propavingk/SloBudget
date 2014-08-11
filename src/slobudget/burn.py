@@ -159,3 +159,12 @@ def project_exhaustion(
             reason="budget is already exhausted, nothing left to project",
         )
     if rate <= 0.0:
+        return Projection(
+            can_project=False,
+            burn_rate=rate,
+            remaining_events=remaining_events,
+            seconds_to_exhaustion=None,
+            reason="burn rate is zero, the budget is not being spent",
+        )
+    if not stats.complete:
+        return Projection(
