@@ -44,3 +44,12 @@ class Interval:
         """Fraction of events in this interval that were bad, in [0, 1]."""
         if self.total == 0:
             return 0.0
+        return self.bad / self.total
+
+
+@dataclass(frozen=True)
+class Gap:
+    """A missing stretch between two recorded intervals.
+
+    after is the timestamp of the interval just before the gap, before is the
+    timestamp of the next recorded interval. missing is the count of interval
