@@ -61,3 +61,12 @@ class Gap:
     missing: int
 
 
+@dataclass(frozen=True)
+class Series:
+    """A parsed indicator series.
+
+    interval_seconds is the fixed step between interval starts. intervals are
+    sorted by start time. gaps lists every detected discontinuity.
+    """
+
+    interval_seconds: int
