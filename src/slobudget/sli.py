@@ -70,3 +70,12 @@ class Series:
     """
 
     interval_seconds: int
+    intervals: tuple[Interval, ...]
+    gaps: tuple[Gap, ...]
+
+    @property
+    def has_gaps(self) -> bool:
+        return len(self.gaps) > 0
+
+    @property
+    def total_good(self) -> int:
