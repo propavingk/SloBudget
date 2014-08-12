@@ -53,3 +53,11 @@ class Gap:
 
     after is the timestamp of the interval just before the gap, before is the
     timestamp of the next recorded interval. missing is the count of interval
+    slots that have no data.
+    """
+
+    after: datetime
+    before: datetime
+    missing: int
+
+
