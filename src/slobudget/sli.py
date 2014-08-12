@@ -35,3 +35,12 @@ class Interval:
     good: int
     total: int
 
+    @property
+    def bad(self) -> int:
+        return self.total - self.good
+
+    @property
+    def failure_ratio(self) -> float:
+        """Fraction of events in this interval that were bad, in [0, 1]."""
+        if self.total == 0:
+            return 0.0
