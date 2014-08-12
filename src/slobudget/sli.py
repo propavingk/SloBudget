@@ -79,3 +79,12 @@ class Series:
 
     @property
     def total_good(self) -> int:
+        return sum(i.good for i in self.intervals)
+
+    @property
+    def total_events(self) -> int:
+        return sum(i.total for i in self.intervals)
+
+    @property
+    def total_bad(self) -> int:
+        return sum(i.bad for i in self.intervals)
