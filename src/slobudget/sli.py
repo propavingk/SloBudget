@@ -88,3 +88,12 @@ class Series:
     @property
     def total_bad(self) -> int:
         return sum(i.bad for i in self.intervals)
+
+    @property
+    def window_seconds(self) -> int:
+        """Wall clock span the recorded data would cover if it had no gaps.
+
+        This counts one interval per recorded row, so it is the covered time,
+        not the span from first to last timestamp.
+        """
+        return self.interval_seconds * len(self.intervals)
