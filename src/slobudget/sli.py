@@ -97,3 +97,12 @@ class Series:
         not the span from first to last timestamp.
         """
         return self.interval_seconds * len(self.intervals)
+
+    def span_seconds(self) -> int:
+        """Seconds from the first interval start to the end of the last one."""
+        if not self.intervals:
+            return 0
+        first = self.intervals[0].start
+        last = self.intervals[-1].start
+        return int((last - first).total_seconds()) + self.interval_seconds
+
