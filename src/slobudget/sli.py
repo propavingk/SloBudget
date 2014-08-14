@@ -106,3 +106,12 @@ class Series:
         last = self.intervals[-1].start
         return int((last - first).total_seconds()) + self.interval_seconds
 
+
+def _parse_timestamp(raw: str, line_no: int) -> datetime:
+    text = raw.strip()
+    # Accept a trailing Z as UTC, which datetime.fromisoformat rejects before 3.11
+    # in some builds. Normalise it to +00:00 for portability.
+    if text.endswith("Z"):
+        text = text[:-1] + "+00:00"
+    try:
+        dt = datetime.fromisoformat(text)
