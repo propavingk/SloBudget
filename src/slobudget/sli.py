@@ -115,3 +115,12 @@ def _parse_timestamp(raw: str, line_no: int) -> datetime:
         text = text[:-1] + "+00:00"
     try:
         dt = datetime.fromisoformat(text)
+    except ValueError as exc:
+        raise SliError(f"line {line_no}: bad timestamp {raw!r}: {exc}") from exc
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt.astimezone(timezone.utc)
+
+
+def parse_series(text: str) -> Series:
+    """Parse indicator series text into a validated Series.
