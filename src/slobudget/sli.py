@@ -124,3 +124,11 @@ def _parse_timestamp(raw: str, line_no: int) -> datetime:
 
 def parse_series(text: str) -> Series:
     """Parse indicator series text into a validated Series.
+
+    Raises SliError on malformed rows, non monotonic timestamps, inconsistent
+    interval lengths, or good greater than total.
+    """
+    rows: list[Interval] = []
+    for line_no, raw_line in enumerate(text.splitlines(), start=1):
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
