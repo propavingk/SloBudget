@@ -141,3 +141,12 @@ def parse_series(text: str) -> Series:
         start = _parse_timestamp(parts[0], line_no)
         try:
             good = int(parts[1].strip())
+            total = int(parts[2].strip())
+        except ValueError as exc:
+            raise SliError(f"line {line_no}: good and total must be integers") from exc
+        if good < 0 or total < 0:
+            raise SliError(f"line {line_no}: counts must not be negative")
+        if good > total:
+            raise SliError(
+                f"line {line_no}: good ({good}) exceeds total ({total})"
+            )
