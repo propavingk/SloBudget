@@ -159,3 +159,12 @@ def parse_series(text: str) -> Series:
 
     rows.sort(key=lambda i: i.start)
 
+    # Reject duplicate timestamps.
+    for a, b in zip(rows, rows[1:]):
+        if a.start == b.start:
+            raise SliError(f"duplicate timestamp {a.start.isoformat()}")
+
+    interval_seconds = int((rows[1].start - rows[0].start).total_seconds())
+    if interval_seconds <= 0:
+        raise SliError("interval length inferred as non positive")
+
