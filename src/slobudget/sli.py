@@ -150,3 +150,12 @@ def parse_series(text: str) -> Series:
             raise SliError(
                 f"line {line_no}: good ({good}) exceeds total ({total})"
             )
+        rows.append(Interval(start=start, good=good, total=total))
+
+    if not rows:
+        raise SliError("no data rows found")
+    if len(rows) < 2:
+        raise SliError("need at least 2 intervals to infer the interval length")
+
+    rows.sort(key=lambda i: i.start)
+
