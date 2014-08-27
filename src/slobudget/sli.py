@@ -132,3 +132,12 @@ def parse_series(text: str) -> Series:
     for line_no, raw_line in enumerate(text.splitlines(), start=1):
         line = raw_line.strip()
         if not line or line.startswith("#"):
+            continue
+        parts = line.split(",")
+        if len(parts) != 3:
+            raise SliError(
+                f"line {line_no}: expected 3 comma separated fields, got {len(parts)}"
+            )
+        start = _parse_timestamp(parts[0], line_no)
+        try:
+            good = int(parts[1].strip())
