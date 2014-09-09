@@ -401,3 +401,55 @@ slobudget/
 | Gap                | One or more interval slots with no recorded data.                |
 
 ## Verification
+
+The suite is stdlib unittest. Run it from the project root so the tests can read
+the sample files:
+
+```
+PYTHONPATH=src python -m unittest discover -s tests -v
+```
+
+The run reports 53 tests. They cover the parser and its rejections, interval and
+gap detection, objective and window parsing, the budget maths for the within
+budget and exhausted cases, burn rate at known pace multiples, every projection
+refusal path, the multi window firing and skip behaviour, and the CLI exit codes
+end to end against both sample files.
+
+Two more checks matter for the assets and the prose. Every SVG under
+`docs/assets/` parses as XML, and a search of the whole project for the em dash
+character returns nothing.
+
+## Limitations
+
+- The budget is sized to observed events, so it is only as representative as the
+  traffic in the series. A window with atypical load gives an atypical budget.
+- The projection is linear and conditional. It extrapolates one rate and makes
+  no attempt to model recovery, seasonality, or a second incident.
+- Time based budgets are not supported. Everything is event based. A service
+  measured by seconds of downtime rather than failed events would need its
+  downtime expressed as events first.
+- The multi window thresholds are the standard values for a 30 day window. Other
+  windows keep the same thresholds, which may not be the right calibration for a
+  very short or very long window.
+- The alert evaluator slides its windows over recorded interval boundaries only.
+  It cannot see sub interval bursts, and it does not model alert duration or
+  for-clauses.
+- Only one series is read at a time. There is no aggregation across many
+  services or any multi tenant view.
+
+## Roadmap
+
+Not promises, and not dated:
+
+- Configurable alert policies read from a file, so the fast-burn and slow-burn
+  windows and thresholds are not fixed in code.
+- A `diff` command that compares two runs and reports the change in remaining
+  budget, for use in a pull request comment.
+- Optional per interval output from the `burn` command so the burndown can be
+  regenerated without a separate script.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
+
+<!-- draft note 88 -->
