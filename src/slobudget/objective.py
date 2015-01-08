@@ -16,3 +16,14 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 
+class ObjectiveError(ValueError):
+    """Raised when an objective or window string cannot be parsed."""
+
+
+_DURATION_UNITS = {
+    "s": 1,
+    "m": 60,
+    "h": 3600,
+    "d": 86400,
+    "w": 604800,
+}
