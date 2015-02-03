@@ -39,3 +39,14 @@ def parse_objective(text: str) -> float:
     raw = text.strip()
     if not raw:
         raise ObjectiveError("empty objective")
+    is_percent = raw.endswith("%")
+    if is_percent:
+        raw = raw[:-1].strip()
+    try:
+        value = float(raw)
+    except ValueError as exc:
+        raise ObjectiveError(f"bad objective {text!r}") from exc
+    if is_percent or value > 1.0:
+        value = value / 100.0
+    if not (0.0 < value < 1.0):
+        raise ObjectiveError(
