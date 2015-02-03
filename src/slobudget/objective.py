@@ -27,3 +27,15 @@ _DURATION_UNITS = {
     "d": 86400,
     "w": 604800,
 }
+
+
+def parse_objective(text: str) -> float:
+    """Parse an objective such as '99.9', '99.9%' or '0.999' into a ratio.
+
+    Values with a percent sign, or bare values greater than 1, are read as
+    percentages. Bare values in (0, 1] are read as ratios. The result is the
+    target success ratio in the open interval (0, 1).
+    """
+    raw = text.strip()
+    if not raw:
+        raise ObjectiveError("empty objective")
