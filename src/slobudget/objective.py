@@ -50,3 +50,15 @@ def parse_objective(text: str) -> float:
         value = value / 100.0
     if not (0.0 < value < 1.0):
         raise ObjectiveError(
+            f"objective must be a ratio in (0, 1), got {value} from {text!r}"
+        )
+    return value
+
+
+def parse_window(text: str) -> int:
+    """Parse a duration such as '30d', '1h', '2w' into seconds.
+
+    Accepts a single integer count followed by one unit suffix from
+    s, m, h, d, w. A bare integer is read as seconds.
+    """
+    raw = text.strip().lower()
