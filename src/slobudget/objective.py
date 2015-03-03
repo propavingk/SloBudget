@@ -62,3 +62,15 @@ def parse_window(text: str) -> int:
     s, m, h, d, w. A bare integer is read as seconds.
     """
     raw = text.strip().lower()
+    if not raw:
+        raise ObjectiveError("empty window")
+    unit = raw[-1]
+    if unit.isdigit():
+        try:
+            seconds = int(raw)
+        except ValueError as exc:
+            raise ObjectiveError(f"bad window {text!r}") from exc
+        if seconds <= 0:
+            raise ObjectiveError("window must be positive")
+        return seconds
+    if unit not in _DURATION_UNITS:
