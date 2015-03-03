@@ -74,3 +74,14 @@ def parse_window(text: str) -> int:
             raise ObjectiveError("window must be positive")
         return seconds
     if unit not in _DURATION_UNITS:
+        raise ObjectiveError(
+            f"unknown window unit {unit!r} in {text!r}, use one of s m h d w"
+        )
+    try:
+        count = int(raw[:-1])
+    except ValueError as exc:
+        raise ObjectiveError(f"bad window count in {text!r}") from exc
+    if count <= 0:
+        raise ObjectiveError("window must be positive")
+    return count * _DURATION_UNITS[unit]
+
