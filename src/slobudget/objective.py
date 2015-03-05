@@ -85,3 +85,15 @@ def parse_window(text: str) -> int:
         raise ObjectiveError("window must be positive")
     return count * _DURATION_UNITS[unit]
 
+
+def format_duration(seconds: float) -> str:
+    """Render a positive duration in seconds as a compact human string.
+
+    Deterministic, no locale, largest sensible unit down to seconds.
+    """
+    if seconds < 0:
+        return "0s"
+    total = int(round(seconds))
+    parts: list[str] = []
+    for unit, size in (("d", 86400), ("h", 3600), ("m", 60), ("s", 1)):
+        if total >= size or (unit == "s" and not parts):
