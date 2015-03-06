@@ -97,3 +97,14 @@ def format_duration(seconds: float) -> str:
     parts: list[str] = []
     for unit, size in (("d", 86400), ("h", 3600), ("m", 60), ("s", 1)):
         if total >= size or (unit == "s" and not parts):
+            count = total // size
+            total -= count * size
+            if count > 0 or (unit == "s" and not parts):
+                parts.append(f"{count}{unit}")
+    return " ".join(parts) if parts else "0s"
+
+
+@dataclass(frozen=True)
+class Objective:
+    """A declared objective and its compliance window.
+
