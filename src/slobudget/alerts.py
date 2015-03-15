@@ -17,3 +17,14 @@ window pairs for a 30 day compliance window:
     fast burn:  long 1h and short 5m, threshold 14.4
     slow burn:  long 6h and short 30m, threshold 6.0
 
+A threshold of 14.4 over 1 hour burns 2 percent of a 30 day budget in that
+hour, which is the workbook's page worthy fast burn. 6.0 over 6 hours burns
+5 percent, the slower ticket worthy burn. Both require the short window to also
+exceed the threshold, so a recovered incident stops firing.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from datetime import datetime, timedelta
+
