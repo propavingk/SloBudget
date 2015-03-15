@@ -131,3 +131,15 @@ class BudgetStatus:
 
     All event counts are integers from the series. Ratios are floats. consumed
     is bad_events / budget_events, so 1.0 means the budget is exactly spent.
+    """
+
+    objective: Objective
+    total_events: int
+    bad_events: int
+    budget_events: float
+    consumed_fraction: float
+    remaining_events: float
+
+    @property
+    def observed_failure_ratio(self) -> float:
+        if self.total_events == 0:
