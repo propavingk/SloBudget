@@ -143,3 +143,14 @@ class BudgetStatus:
     @property
     def observed_failure_ratio(self) -> float:
         if self.total_events == 0:
+            return 0.0
+        return self.bad_events / self.total_events
+
+    @property
+    def exhausted(self) -> bool:
+        return self.remaining_events <= 0.0
+
+    @property
+    def remaining_fraction(self) -> float:
+        """Fraction of the budget still available, clamped at zero below."""
+        if self.budget_events <= 0.0:
