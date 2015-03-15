@@ -120,3 +120,14 @@ class Objective:
     def allowed_failure_ratio(self) -> float:
         return 1.0 - self.target
 
+    def budget_events(self, expected_total_events: float) -> float:
+        """Total bad events permitted over the window for a given event count."""
+        return self.allowed_failure_ratio * expected_total_events
+
+
+@dataclass(frozen=True)
+class BudgetStatus:
+    """Budget accounting derived from an objective and an observed series.
+
+    All event counts are integers from the series. Ratios are floats. consumed
+    is bad_events / budget_events, so 1.0 means the budget is exactly spent.
