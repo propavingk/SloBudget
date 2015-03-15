@@ -108,3 +108,15 @@ def format_duration(seconds: float) -> str:
 class Objective:
     """A declared objective and its compliance window.
 
+    target is the success ratio in (0, 1). window_seconds is the compliance
+    window length. allowed_failure_ratio is (1 - target), the share of events
+    that may fail before the budget is exhausted.
+    """
+
+    target: float
+    window_seconds: int
+
+    @property
+    def allowed_failure_ratio(self) -> float:
+        return 1.0 - self.target
+
