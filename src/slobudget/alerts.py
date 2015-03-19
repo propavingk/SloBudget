@@ -28,3 +28,14 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 
+from .burn import burn_rate, window_stats
+from .objective import Objective
+from .sli import Series
+
+
+@dataclass(frozen=True)
+class AlertPolicy:
+    """One multi-window burn rate alert definition.
+
+    name is a short label. long_seconds and short_seconds are the two window
+    lengths. threshold is the burn rate both windows must exceed to fire.
