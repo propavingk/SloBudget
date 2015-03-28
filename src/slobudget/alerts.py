@@ -51,3 +51,14 @@ class AlertPolicy:
 
 
 def default_policies() -> tuple[AlertPolicy, ...]:
+    """The standard fast-burn and slow-burn pair for a 30 day window."""
+    return (
+        AlertPolicy(
+            name="fast-burn",
+            long_seconds=3600,
+            short_seconds=300,
+            threshold=14.4,
+            budget_fraction=0.02,
+        ),
+        AlertPolicy(
+            name="slow-burn",
