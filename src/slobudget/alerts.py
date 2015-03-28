@@ -85,3 +85,14 @@ class AlertEvaluation:
     fired_at: datetime | None
     long_rate: float | None
     short_rate: float | None
+    skipped: bool
+    reason: str
+
+
+def _rate_ending_at(
+    series: Series,
+    objective: Objective,
+    boundary_end: datetime,
+    window_seconds: int,
+) -> tuple[float, bool]:
+    """Burn rate for the window ending exactly at boundary_end.
