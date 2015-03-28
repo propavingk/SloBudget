@@ -62,3 +62,14 @@ def default_policies() -> tuple[AlertPolicy, ...]:
         ),
         AlertPolicy(
             name="slow-burn",
+            long_seconds=21600,
+            short_seconds=1800,
+            threshold=6.0,
+            budget_fraction=0.05,
+        ),
+    )
+
+
+@dataclass(frozen=True)
+class AlertEvaluation:
+    """The result of evaluating one policy against a series.
