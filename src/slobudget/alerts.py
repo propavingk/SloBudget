@@ -39,3 +39,15 @@ class AlertPolicy:
 
     name is a short label. long_seconds and short_seconds are the two window
     lengths. threshold is the burn rate both windows must exceed to fire.
+    budget_fraction records the share of budget the long window would burn at
+    the threshold, for documentation in the report.
+    """
+
+    name: str
+    long_seconds: int
+    short_seconds: int
+    threshold: float
+    budget_fraction: float
+
+
+def default_policies() -> tuple[AlertPolicy, ...]:
