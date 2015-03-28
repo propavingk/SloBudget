@@ -73,3 +73,15 @@ def default_policies() -> tuple[AlertPolicy, ...]:
 @dataclass(frozen=True)
 class AlertEvaluation:
     """The result of evaluating one policy against a series.
+
+    fired is True when the condition held at some boundary. fired_at is the
+    interval end timestamp of the first firing, or None. long_rate and
+    short_rate are the burn rates at that boundary. skipped is True when the
+    series is too short to hold either window, with reason set.
+    """
+
+    policy: AlertPolicy
+    fired: bool
+    fired_at: datetime | None
+    long_rate: float | None
+    short_rate: float | None
