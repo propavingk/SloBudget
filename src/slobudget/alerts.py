@@ -96,3 +96,14 @@ def _rate_ending_at(
     window_seconds: int,
 ) -> tuple[float, bool]:
     """Burn rate for the window ending exactly at boundary_end.
+
+    Returns (rate, complete). Builds a synthetic tail-limited view by summing
+    intervals whose start lies in [boundary_end - window, boundary_end).
+    """
+    start_cut = boundary_end - timedelta(seconds=window_seconds)
+    good = total = bad = count = 0
+    for interval in series.intervals:
+        if start_cut <= interval.start < boundary_end:
+            good += interval.good
+            total += interval.total
+            bad += interval.bad
