@@ -107,3 +107,15 @@ def _rate_ending_at(
             good += interval.good
             total += interval.total
             bad += interval.bad
+            count += 1
+    failure_ratio = 0.0 if total == 0 else bad / total
+    allowed = objective.allowed_failure_ratio
+    rate = 0.0 if allowed <= 0 else failure_ratio / allowed
+    # Complete when the window start is at or after the first recorded interval
+    # and the number of covered intervals matches the window length exactly.
+    expected = window_seconds // series.interval_seconds
+    complete = (
+        start_cut >= series.intervals[0].start and count == expected and expected > 0
+    )
+    return rate, complete
+
