@@ -119,3 +119,14 @@ def _rate_ending_at(
     )
     return rate, complete
 
+
+def evaluate_policy(
+    series: Series, objective: Objective, policy: AlertPolicy
+) -> AlertEvaluation:
+    """Slide both windows across the series and find the first firing boundary.
+
+    A boundary is the end of each recorded interval. The condition fires when
+    both the long and the short window burn rates exceed the threshold and both
+    windows are complete at that boundary.
+    """
+    if series.window_seconds < policy.long_seconds:
