@@ -130,3 +130,14 @@ def evaluate_policy(
     windows are complete at that boundary.
     """
     if series.window_seconds < policy.long_seconds:
+        return AlertEvaluation(
+            policy=policy,
+            fired=False,
+            fired_at=None,
+            long_rate=None,
+            short_rate=None,
+            skipped=True,
+            reason=(
+                f"series covers {series.window_seconds}s, shorter than the "
+                f"{policy.long_seconds}s long window"
+            ),
