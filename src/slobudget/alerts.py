@@ -141,3 +141,14 @@ def evaluate_policy(
                 f"series covers {series.window_seconds}s, shorter than the "
                 f"{policy.long_seconds}s long window"
             ),
+        )
+
+    for interval in series.intervals:
+        boundary_end = interval.start + timedelta(seconds=series.interval_seconds)
+        long_rate, long_complete = _rate_ending_at(
+            series, objective, boundary_end, policy.long_seconds
+        )
+        if not long_complete:
+            continue
+        short_rate, short_complete = _rate_ending_at(
+            series, objective, boundary_end, policy.short_seconds
