@@ -152,3 +152,15 @@ def evaluate_policy(
             continue
         short_rate, short_complete = _rate_ending_at(
             series, objective, boundary_end, policy.short_seconds
+        )
+        if not short_complete:
+            continue
+        if long_rate > policy.threshold and short_rate > policy.threshold:
+            return AlertEvaluation(
+                policy=policy,
+                fired=True,
+                fired_at=boundary_end,
+                long_rate=long_rate,
+                short_rate=short_rate,
+                skipped=False,
+                reason=(
