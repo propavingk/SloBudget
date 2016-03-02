@@ -164,3 +164,29 @@ def evaluate_policy(
                 short_rate=short_rate,
                 skipped=False,
                 reason=(
+                    f"both windows exceeded {policy.threshold} at "
+                    f"{boundary_end.isoformat()}"
+                ),
+            )
+
+    return AlertEvaluation(
+        policy=policy,
+        fired=False,
+        fired_at=None,
+        long_rate=None,
+        short_rate=None,
+        skipped=False,
+        reason="no boundary had both windows above the threshold",
+    )
+
+
+def evaluate_all(
+    series: Series, objective: Objective, policies: tuple[AlertPolicy, ...] | None = None
+) -> list[AlertEvaluation]:
+    """Evaluate every policy in order, returning one evaluation each."""
+    policies = policies if policies is not None else default_policies()
+    return [evaluate_policy(series, objective, p) for p in policies]
+
+
+def any_fired(evaluations: list[AlertEvaluation]) -> bool:
+    """True when at least one policy fired."""
