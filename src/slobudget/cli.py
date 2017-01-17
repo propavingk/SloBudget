@@ -12,3 +12,17 @@ Exit codes: 0 clean, 1 findings present (budget exhausted or an alert fired),
 """
 
 from __future__ import annotations
+
+import argparse
+import sys
+
+from . import __version__, alerts, report
+from .burn import project_exhaustion, window_stats, burn_rate
+from .objective import (
+    Objective,
+    ObjectiveError,
+    parse_objective,
+    parse_window,
+)
+from .sli import SliError, load_series
+
