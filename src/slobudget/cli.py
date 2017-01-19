@@ -26,3 +26,16 @@ from .objective import (
 )
 from .sli import SliError, load_series
 
+
+def _build_objective(args: argparse.Namespace) -> Objective:
+    target = parse_objective(args.objective)
+    window = parse_window(args.window)
+    return Objective(target=target, window_seconds=window)
+
+
+def _cmd_budget(args: argparse.Namespace) -> int:
+    series = load_series(args.series)
+    objective = _build_objective(args)
+    from .objective import derive_budget
+
+    status = derive_budget(objective, series.total_events, series.total_bad)
