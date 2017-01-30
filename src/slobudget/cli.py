@@ -66,3 +66,16 @@ def _cmd_burn(args: argparse.Namespace) -> int:
             continue
         seen.add(secs)
         stats = window_stats(series, secs)
+        windows.append((label, stats, burn_rate(objective, stats)))
+
+    primary = window_stats(series, series.window_seconds)
+    projection = project_exhaustion(objective, primary, status.remaining_events)
+    for line in report.render_burn(objective, windows, projection):
+        print(line)
+    return 1 if status.exhausted else 0
+
+
+def _cmd_alerts(args: argparse.Namespace) -> int:
+    series = load_series(args.series)
+    objective = _build_objective(args)
+    evaluations = alerts.evaluate_all(series, objective)
