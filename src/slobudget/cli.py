@@ -52,3 +52,17 @@ def _cmd_burn(args: argparse.Namespace) -> int:
     status = derive_budget(objective, series.total_events, series.total_bad)
 
     # Report a set of windows scaled to the recorded data. The primary window
+    # is the whole recorded span, which drives the projection.
+    labels = [
+        ("1h", 3600),
+        ("6h", 21600),
+        ("1d", 86400),
+        ("all", series.window_seconds),
+    ]
+    windows = []
+    seen: set[int] = set()
+    for label, secs in labels:
+        if secs <= 0 or secs in seen:
+            continue
+        seen.add(secs)
+        stats = window_stats(series, secs)
