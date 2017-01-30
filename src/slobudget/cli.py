@@ -79,3 +79,17 @@ def _cmd_alerts(args: argparse.Namespace) -> int:
     series = load_series(args.series)
     objective = _build_objective(args)
     evaluations = alerts.evaluate_all(series, objective)
+    for line in report.render_alerts(evaluations):
+        print(line)
+    return 1 if alerts.any_fired(evaluations) else 0
+
+
+def _cmd_version(args: argparse.Namespace) -> int:
+    print(f"slobudget {__version__}")
+    return 0
+
+
+def _add_common(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("series", help="path to the indicator series file")
+    parser.add_argument(
+        "--objective",
