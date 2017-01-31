@@ -93,3 +93,16 @@ def _add_common(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("series", help="path to the indicator series file")
     parser.add_argument(
         "--objective",
+        "-o",
+        default="99.9",
+        help="target success ratio, for example 99.9, 99.9%% or 0.999",
+    )
+    parser.add_argument(
+        "--window",
+        "-w",
+        default="30d",
+        help="compliance window, for example 30d, 1w, 24h",
+    )
+
+
+def build_parser() -> argparse.ArgumentParser:
