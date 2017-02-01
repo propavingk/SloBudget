@@ -106,3 +106,16 @@ def _add_common(parser: argparse.ArgumentParser) -> None:
 
 
 def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        prog="slobudget",
+        description="Error budget accounting for service level objectives.",
+    )
+    sub = parser.add_subparsers(dest="command", required=True)
+
+    p_budget = sub.add_parser("budget", help="compute the error budget and consumption")
+    _add_common(p_budget)
+    p_budget.set_defaults(func=_cmd_budget)
+
+    p_burn = sub.add_parser("burn", help="burn rates and a conditional projection")
+    _add_common(p_burn)
+    p_burn.set_defaults(func=_cmd_burn)
