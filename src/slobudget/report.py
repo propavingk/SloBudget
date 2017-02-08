@@ -28,3 +28,12 @@ def render_budget(status: BudgetStatus, has_gaps: bool) -> list[str]:
     lines: list[str] = []
     lines.append("error budget report")
     lines.append(f"  objective            {_pct(obj.target)} success")
+    lines.append(f"  compliance window    {format_duration(obj.window_seconds)}")
+    lines.append(f"  allowed failure      {_pct(obj.allowed_failure_ratio)}")
+    lines.append(f"  total events         {status.total_events}")
+    lines.append(f"  bad events           {status.bad_events}")
+    lines.append(f"  observed failure     {_pct(status.observed_failure_ratio)}")
+    lines.append(f"  budget (events)      {status.budget_events:.3f}")
+    lines.append(f"  budget consumed      {_pct(status.consumed_fraction)}")
+    lines.append(f"  budget remaining     {_pct(status.remaining_fraction)}")
+    lines.append(f"  remaining events     {status.remaining_events:.3f}")
