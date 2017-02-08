@@ -18,3 +18,13 @@ def _pct(value: float) -> str:
     return f"{value * 100:.3f}%"
 
 
+def _ratio(value: float) -> str:
+    return f"{value:.6f}"
+
+
+def render_budget(status: BudgetStatus, has_gaps: bool) -> list[str]:
+    """Render the budget accounting report."""
+    obj = status.objective
+    lines: list[str] = []
+    lines.append("error budget report")
+    lines.append(f"  objective            {_pct(obj.target)} success")
