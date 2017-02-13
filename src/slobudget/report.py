@@ -37,3 +37,13 @@ def render_budget(status: BudgetStatus, has_gaps: bool) -> list[str]:
     lines.append(f"  budget consumed      {_pct(status.consumed_fraction)}")
     lines.append(f"  budget remaining     {_pct(status.remaining_fraction)}")
     lines.append(f"  remaining events     {status.remaining_events:.3f}")
+    if has_gaps:
+        lines.append("  note                 series has gaps, totals cover recorded data only")
+    if status.exhausted:
+        lines.append("  status               EXHAUSTED, budget is spent")
+    else:
+        lines.append("  status               within budget")
+    return lines
+
+
+def render_burn(
