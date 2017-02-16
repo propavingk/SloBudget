@@ -57,3 +57,13 @@ def render_burn(
     projection built from the primary window.
     """
     lines: list[str] = []
+    lines.append("burn rate report")
+    lines.append(f"  objective            {_pct(objective.target)} success")
+    lines.append(f"  allowed failure      {_pct(objective.allowed_failure_ratio)}")
+    lines.append("  windows")
+    for label, stats, rate in windows:
+        flag = "" if stats.complete else "  (incomplete)"
+        lines.append(
+            f"    {label:<6} rate {rate:8.3f}  "
+            f"failure {_pct(stats.failure_ratio)}  "
+            f"intervals {stats.intervals}{flag}"
