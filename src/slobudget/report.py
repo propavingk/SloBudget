@@ -47,3 +47,13 @@ def render_budget(status: BudgetStatus, has_gaps: bool) -> list[str]:
 
 
 def render_burn(
+    objective: Objective,
+    windows: list[tuple[str, WindowStats, float]],
+    projection: Projection,
+) -> list[str]:
+    """Render burn rates over several windows plus the projection.
+
+    windows is a list of (label, stats, rate). projection is the exhaustion
+    projection built from the primary window.
+    """
+    lines: list[str] = []
