@@ -67,3 +67,12 @@ def render_burn(
             f"    {label:<6} rate {rate:8.3f}  "
             f"failure {_pct(stats.failure_ratio)}  "
             f"intervals {stats.intervals}{flag}"
+        )
+    lines.append("  projection")
+    lines.append(f"    burn rate          {projection.burn_rate:.3f}")
+    lines.append(f"    remaining events   {projection.remaining_events:.3f}")
+    if projection.can_project:
+        lines.append(
+            f"    time to exhaustion {format_duration(projection.seconds_to_exhaustion)}"
+        )
+        lines.append(f"    conditional        yes, {projection.reason}")
