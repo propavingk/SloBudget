@@ -76,3 +76,13 @@ def render_burn(
             f"    time to exhaustion {format_duration(projection.seconds_to_exhaustion)}"
         )
         lines.append(f"    conditional        yes, {projection.reason}")
+    else:
+        lines.append("    time to exhaustion refused")
+        lines.append(f"    reason             {projection.reason}")
+    return lines
+
+
+def render_alerts(evaluations: list[AlertEvaluation]) -> list[str]:
+    """Render the multi-window alert evaluation report."""
+    lines: list[str] = []
+    lines.append("multi-window burn rate alerts")
