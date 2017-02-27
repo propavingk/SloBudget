@@ -27,3 +27,10 @@ class EvaluateTests(unittest.TestCase):
     def test_fast_burn_fires_on_incident(self):
         evals = evaluate_all(self.series, self.objective)
         fast = next(e for e in evals if e.policy.name == "fast-burn")
+        self.assertTrue(fast.fired)
+        self.assertIsNotNone(fast.fired_at)
+        self.assertEqual(fast.fired_at.strftime("%H:%M"), "01:10")
+
+    def test_slow_burn_skipped_when_series_too_short(self):
+        evals = evaluate_all(self.series, self.objective)
+        slow = next(e for e in evals if e.policy.name == "slow-burn")
