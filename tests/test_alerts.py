@@ -12,3 +12,10 @@ from slobudget.alerts import (
 from slobudget.objective import Objective
 from slobudget.sli import load_series, parse_series
 
+
+class DefaultPolicyTests(unittest.TestCase):
+    def test_pair_present(self):
+        names = [p.name for p in default_policies()]
+        self.assertEqual(names, ["fast-burn", "slow-burn"])
+
+
