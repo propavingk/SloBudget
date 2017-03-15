@@ -34,3 +34,11 @@ class EvaluateTests(unittest.TestCase):
     def test_slow_burn_skipped_when_series_too_short(self):
         evals = evaluate_all(self.series, self.objective)
         slow = next(e for e in evals if e.policy.name == "slow-burn")
+        self.assertTrue(slow.skipped)
+
+    def test_any_fired_true(self):
+        evals = evaluate_all(self.series, self.objective)
+        self.assertTrue(any_fired(evals))
+
+    def test_no_fire_on_clean_series(self):
+        clean = parse_series(
