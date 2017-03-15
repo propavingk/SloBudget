@@ -8,3 +8,13 @@ from slobudget.sli import parse_series
 
 
 def _series(rows):
+    return parse_series("\n".join(rows) + "\n")
+
+
+STEADY = _series(
+    [
+        "2026-03-01T00:00:00Z,1980,2000",  # 1% failure each
+        "2026-03-01T00:05:00Z,1980,2000",
+        "2026-03-01T00:10:00Z,1980,2000",
+        "2026-03-01T00:15:00Z,1980,2000",
+    ]
