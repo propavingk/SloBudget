@@ -42,3 +42,11 @@ class EvaluateTests(unittest.TestCase):
 
     def test_no_fire_on_clean_series(self):
         clean = parse_series(
+            "\n".join(
+                f"2026-03-01T{h:02d}:{m:02d}:00Z,2000,2000"
+                for h in range(2)
+                for m in range(0, 60, 5)
+            )
+            + "\n"
+        )
+        policy = AlertPolicy(
