@@ -37,3 +37,13 @@ GAPPED = _series(
     ]
 )
 
+
+class WindowStatsTests(unittest.TestCase):
+    def test_full_window_complete(self):
+        stats = window_stats(STEADY, 1200)  # exactly the covered span
+        self.assertEqual(stats.intervals, 4)
+        self.assertTrue(stats.complete)
+        self.assertAlmostEqual(stats.failure_ratio, 0.01)
+
+    def test_window_longer_than_data_incomplete(self):
+        stats = window_stats(STEADY, 3600)
