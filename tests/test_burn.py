@@ -47,3 +47,12 @@ class WindowStatsTests(unittest.TestCase):
 
     def test_window_longer_than_data_incomplete(self):
         stats = window_stats(STEADY, 3600)
+        self.assertFalse(stats.complete)
+
+    def test_gap_inside_window_incomplete(self):
+        stats = window_stats(GAPPED, GAPPED.span_seconds())
+        self.assertFalse(stats.complete)
+
+
+class BurnRateTests(unittest.TestCase):
+    def test_rate_one_at_objective_pace(self):
