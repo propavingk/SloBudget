@@ -76,3 +76,12 @@ class ProjectionTests(unittest.TestCase):
         self.assertTrue(proj.can_project)
         self.assertIsNotNone(proj.seconds_to_exhaustion)
         self.assertIn("conditional", proj.reason.lower() + " conditional")
+
+    def test_refuses_on_zero_rate(self):
+        obj = Objective(target=0.99, window_seconds=30 * 86400)
+        status = derive_budget(obj, CLEAN.total_events, CLEAN.total_bad)
+        stats = window_stats(CLEAN, CLEAN.window_seconds)
+        proj = project_exhaustion(obj, stats, status.remaining_events)
+        self.assertFalse(proj.can_project)
+        self.assertIn("zero", proj.reason)
+
