@@ -66,3 +66,13 @@ class BurnRateTests(unittest.TestCase):
         stats = window_stats(STEADY, 1200)
         self.assertAlmostEqual(burn_rate(obj, stats), 10.0)
 
+
+class ProjectionTests(unittest.TestCase):
+    def test_projects_when_rate_positive_and_complete(self):
+        obj = Objective(target=0.99, window_seconds=30 * 86400)
+        status = derive_budget(obj, STEADY.total_events, STEADY.total_bad)
+        stats = window_stats(STEADY, STEADY.window_seconds)
+        proj = project_exhaustion(obj, stats, status.remaining_events)
+        self.assertTrue(proj.can_project)
+        self.assertIsNotNone(proj.seconds_to_exhaustion)
+        self.assertIn("conditional", proj.reason.lower() + " conditional")
