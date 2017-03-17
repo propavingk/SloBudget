@@ -56,3 +56,13 @@ class WindowStatsTests(unittest.TestCase):
 
 class BurnRateTests(unittest.TestCase):
     def test_rate_one_at_objective_pace(self):
+        # 1% failure against a 99% objective (1% allowed) is a rate of 1.
+        obj = Objective(target=0.99, window_seconds=30 * 86400)
+        stats = window_stats(STEADY, 1200)
+        self.assertAlmostEqual(burn_rate(obj, stats), 1.0)
+
+    def test_rate_ten(self):
+        obj = Objective(target=0.999, window_seconds=30 * 86400)
+        stats = window_stats(STEADY, 1200)
+        self.assertAlmostEqual(burn_rate(obj, stats), 10.0)
+
