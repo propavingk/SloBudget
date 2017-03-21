@@ -5,3 +5,12 @@ import unittest
 from contextlib import redirect_stdout, redirect_stderr
 
 from slobudget.cli import main
+
+
+def run(argv):
+    out = io.StringIO()
+    err = io.StringIO()
+    with redirect_stdout(out), redirect_stderr(err):
+        code = main(argv)
+    return code, out.getvalue(), err.getvalue()
+
