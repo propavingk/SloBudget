@@ -23,3 +23,11 @@ class VersionTests(unittest.TestCase):
 
 
 class BudgetCommandTests(unittest.TestCase):
+    def test_within_budget_exit_zero(self):
+        code, out, _ = run(
+            ["budget", "samples/service-a.sli", "-o", "98", "-w", "30d"]
+        )
+        self.assertEqual(code, 0)
+        self.assertIn("budget remaining", out)
+        self.assertIn("within budget", out)
+
