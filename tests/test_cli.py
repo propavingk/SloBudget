@@ -40,3 +40,12 @@ class BudgetCommandTests(unittest.TestCase):
 
 
 class BurnCommandTests(unittest.TestCase):
+    def test_burn_runs(self):
+        code, out, _ = run(
+            ["burn", "samples/service-a.sli", "-o", "98", "-w", "30d"]
+        )
+        self.assertEqual(code, 0)
+        self.assertIn("burn rate report", out)
+        self.assertIn("projection", out)
+
+    def test_burn_refuses_projection_on_gap(self):
