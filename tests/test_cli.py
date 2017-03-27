@@ -31,3 +31,12 @@ class BudgetCommandTests(unittest.TestCase):
         self.assertIn("budget remaining", out)
         self.assertIn("within budget", out)
 
+    def test_exhausted_exit_one(self):
+        code, out, _ = run(
+            ["budget", "samples/service-a.sli", "-o", "99.9", "-w", "30d"]
+        )
+        self.assertEqual(code, 1)
+        self.assertIn("EXHAUSTED", out)
+
+
+class BurnCommandTests(unittest.TestCase):
