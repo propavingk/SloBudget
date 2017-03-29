@@ -49,3 +49,12 @@ class BurnCommandTests(unittest.TestCase):
         self.assertIn("projection", out)
 
     def test_burn_refuses_projection_on_gap(self):
+        code, out, _ = run(
+            ["burn", "samples/service-b-gap.sli", "-o", "99", "-w", "30d"]
+        )
+        self.assertIn("refused", out)
+
+
+class AlertsCommandTests(unittest.TestCase):
+    def test_alerts_fire_exit_one(self):
+        code, out, _ = run(
