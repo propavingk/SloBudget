@@ -27,3 +27,13 @@ class ParseObjectiveTests(unittest.TestCase):
             parse_objective("0")
 
     def test_rejects_one(self):
+        with self.assertRaises(ObjectiveError):
+            parse_objective("100%")
+
+    def test_rejects_garbage(self):
+        with self.assertRaises(ObjectiveError):
+            parse_objective("high")
+
+
+class ParseWindowTests(unittest.TestCase):
+    def test_days(self):
