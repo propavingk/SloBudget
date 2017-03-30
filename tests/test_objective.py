@@ -47,3 +47,14 @@ class ParseWindowTests(unittest.TestCase):
 
     def test_bare_seconds(self):
         self.assertEqual(parse_window("300"), 300)
+
+    def test_rejects_bad_unit(self):
+        with self.assertRaises(ObjectiveError):
+            parse_window("5y")
+
+    def test_rejects_zero(self):
+        with self.assertRaises(ObjectiveError):
+            parse_window("0d")
+
+
+class FormatDurationTests(unittest.TestCase):
