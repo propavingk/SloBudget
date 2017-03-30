@@ -58,3 +58,13 @@ class ParseWindowTests(unittest.TestCase):
 
 
 class FormatDurationTests(unittest.TestCase):
+    def test_days_hours(self):
+        self.assertEqual(format_duration(90000), "1d 1h")
+
+    def test_seconds_only(self):
+        self.assertEqual(format_duration(45), "45s")
+
+    def test_zero(self):
+        self.assertEqual(format_duration(0), "0s")
+
+    def test_thirty_days(self):
