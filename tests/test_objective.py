@@ -17,3 +17,13 @@ class ParseObjectiveTests(unittest.TestCase):
         self.assertAlmostEqual(parse_objective("99.9%"), 0.999)
 
     def test_bare_percentage(self):
+        self.assertAlmostEqual(parse_objective("99.9"), 0.999)
+
+    def test_ratio(self):
+        self.assertAlmostEqual(parse_objective("0.98"), 0.98)
+
+    def test_rejects_zero(self):
+        with self.assertRaises(ObjectiveError):
+            parse_objective("0")
+
+    def test_rejects_one(self):
