@@ -37,3 +37,13 @@ class ParseObjectiveTests(unittest.TestCase):
 
 class ParseWindowTests(unittest.TestCase):
     def test_days(self):
+        self.assertEqual(parse_window("30d"), 30 * 86400)
+
+    def test_hours(self):
+        self.assertEqual(parse_window("24h"), 86400)
+
+    def test_weeks(self):
+        self.assertEqual(parse_window("2w"), 2 * 604800)
+
+    def test_bare_seconds(self):
+        self.assertEqual(parse_window("300"), 300)
