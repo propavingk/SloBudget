@@ -9,3 +9,13 @@ HEALTHY = """\
 2026-03-01T00:00:00Z,1999,2000
 2026-03-01T00:05:00Z,1998,2000
 2026-03-01T00:10:00Z,2000,2000
+"""
+
+
+class ParseSeriesTests(unittest.TestCase):
+    def test_parses_basic_series(self):
+        series = parse_series(HEALTHY)
+        self.assertEqual(series.interval_seconds, 300)
+        self.assertEqual(len(series.intervals), 3)
+        self.assertEqual(series.total_events, 6000)
+        self.assertEqual(series.total_good, 5997)
