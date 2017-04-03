@@ -68,3 +68,13 @@ class FormatDurationTests(unittest.TestCase):
         self.assertEqual(format_duration(0), "0s")
 
     def test_thirty_days(self):
+        self.assertEqual(format_duration(30 * 86400), "30d")
+
+
+class DeriveBudgetTests(unittest.TestCase):
+    def test_within_budget(self):
+        obj = Objective(target=0.98, window_seconds=30 * 86400)
+        status = derive_budget(obj, total_events=96000, bad_events=1536)
+        self.assertAlmostEqual(status.budget_events, 1920.0)
+        self.assertAlmostEqual(status.consumed_fraction, 0.8)
+        self.assertAlmostEqual(status.remaining_fraction, 0.2)
