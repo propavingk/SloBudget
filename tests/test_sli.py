@@ -19,3 +19,13 @@ class ParseSeriesTests(unittest.TestCase):
         self.assertEqual(len(series.intervals), 3)
         self.assertEqual(series.total_events, 6000)
         self.assertEqual(series.total_good, 5997)
+        self.assertEqual(series.total_bad, 3)
+        self.assertFalse(series.has_gaps)
+
+    def test_ignores_comments_and_blank_lines(self):
+        text = "# header\n\n" + HEALTHY + "\n# trailing\n"
+        series = parse_series(text)
+        self.assertEqual(len(series.intervals), 3)
+
+    def test_window_and_span_seconds(self):
+        series = parse_series(HEALTHY)
