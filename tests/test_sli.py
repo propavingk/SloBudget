@@ -29,3 +29,13 @@ class ParseSeriesTests(unittest.TestCase):
 
     def test_window_and_span_seconds(self):
         series = parse_series(HEALTHY)
+        # three intervals of 300s covered
+        self.assertEqual(series.window_seconds, 900)
+        # first start to end of last interval
+        self.assertEqual(series.span_seconds(), 900)
+
+    def test_accepts_offset_timestamps(self):
+        text = (
+            "2026-03-01T00:00:00+00:00,1,2\n"
+            "2026-03-01T00:05:00+00:00,1,2\n"
+        )
