@@ -39,3 +39,13 @@ class ParseSeriesTests(unittest.TestCase):
             "2026-03-01T00:00:00+00:00,1,2\n"
             "2026-03-01T00:05:00+00:00,1,2\n"
         )
+        series = parse_series(text)
+        self.assertEqual(series.interval_seconds, 300)
+
+    def test_sorts_out_of_order_rows(self):
+        text = (
+            "2026-03-01T00:10:00Z,2000,2000\n"
+            "2026-03-01T00:00:00Z,1999,2000\n"
+            "2026-03-01T00:05:00Z,1998,2000\n"
+        )
+        series = parse_series(text)
