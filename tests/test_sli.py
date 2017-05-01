@@ -49,3 +49,13 @@ class ParseSeriesTests(unittest.TestCase):
             "2026-03-01T00:05:00Z,1998,2000\n"
         )
         series = parse_series(text)
+        starts = [i.start.strftime("%H:%M") for i in series.intervals]
+        self.assertEqual(starts, ["00:00", "00:05", "00:10"])
+
+
+class GapTests(unittest.TestCase):
+    def test_detects_single_gap(self):
+        text = (
+            "2026-03-01T00:00:00Z,1,2\n"
+            "2026-03-01T00:05:00Z,1,2\n"
+            "2026-03-01T00:20:00Z,1,2\n"  # skips 00:10 and 00:15
