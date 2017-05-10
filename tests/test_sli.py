@@ -59,3 +59,13 @@ class GapTests(unittest.TestCase):
             "2026-03-01T00:00:00Z,1,2\n"
             "2026-03-01T00:05:00Z,1,2\n"
             "2026-03-01T00:20:00Z,1,2\n"  # skips 00:10 and 00:15
+        )
+        series = parse_series(text)
+        self.assertTrue(series.has_gaps)
+        self.assertEqual(len(series.gaps), 1)
+        gap = series.gaps[0]
+        self.assertIsInstance(gap, Gap)
+        self.assertEqual(gap.missing, 2)
+
+
+class ValidationTests(unittest.TestCase):
