@@ -69,3 +69,13 @@ class GapTests(unittest.TestCase):
 
 
 class ValidationTests(unittest.TestCase):
+    def test_rejects_good_over_total(self):
+        text = "2026-03-01T00:00:00Z,3,2\n2026-03-01T00:05:00Z,1,2\n"
+        with self.assertRaises(SliError):
+            parse_series(text)
+
+    def test_rejects_negative_counts(self):
+        text = "2026-03-01T00:00:00Z,-1,2\n2026-03-01T00:05:00Z,1,2\n"
+        with self.assertRaises(SliError):
+            parse_series(text)
+
