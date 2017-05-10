@@ -79,3 +79,13 @@ class ValidationTests(unittest.TestCase):
         with self.assertRaises(SliError):
             parse_series(text)
 
+    def test_rejects_wrong_field_count(self):
+        with self.assertRaises(SliError):
+            parse_series("2026-03-01T00:00:00Z,1\n2026-03-01T00:05:00Z,1,2\n")
+
+    def test_rejects_single_row(self):
+        with self.assertRaises(SliError):
+            parse_series("2026-03-01T00:00:00Z,1,2\n")
+
+    def test_rejects_empty(self):
+        with self.assertRaises(SliError):
