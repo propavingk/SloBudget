@@ -119,3 +119,28 @@ def build_parser() -> argparse.ArgumentParser:
     p_burn = sub.add_parser("burn", help="burn rates and a conditional projection")
     _add_common(p_burn)
     p_burn.set_defaults(func=_cmd_burn)
+
+    p_alerts = sub.add_parser("alerts", help="evaluate the multi-window alert pair")
+    _add_common(p_alerts)
+    p_alerts.set_defaults(func=_cmd_alerts)
+
+    p_version = sub.add_parser("version", help="print the version")
+    p_version.set_defaults(func=_cmd_version)
+
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    try:
+        return args.func(args)
+    except (SliError, ObjectiveError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
+    except FileNotFoundError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
+
+
+if __name__ == "__main__":
