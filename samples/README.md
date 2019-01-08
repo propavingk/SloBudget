@@ -17,3 +17,7 @@ to exercise the full accounting path:
 
 - 00:00 to 00:55, twelve healthy intervals, one bad event each.
 - 01:00 to 01:25, six incident intervals, 220 bad events each (11 percent
+  failure), a sharp burn.
+- 01:30 to 01:55, six recovery intervals, 30 bad events each, tapering.
+- 02:00 to 03:55, twenty four healthy intervals, one bad event each.
+
