@@ -5,3 +5,7 @@ captured production telemetry. Each row is one interval:
 
 ```
 <iso8601-utc-timestamp>,<good>,<total>
+```
+
+The timestamp marks the interval start. Lines beginning with `#` are comments.
+
