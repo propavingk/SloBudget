@@ -9,3 +9,7 @@ captured production telemetry. Each row is one interval:
 
 The timestamp marks the interval start. Lines beginning with `#` are comments.
 
+## service-a.sli
+
+A synthetic service level indicator over four hours at five minute intervals,
+2000 events per interval, starting at 2026-03-01T00:00:00Z. It was constructed
