@@ -13,3 +13,7 @@ The timestamp marks the interval start. Lines beginning with `#` are comments.
 
 A synthetic service level indicator over four hours at five minute intervals,
 2000 events per interval, starting at 2026-03-01T00:00:00Z. It was constructed
+to exercise the full accounting path:
+
+- 00:00 to 00:55, twelve healthy intervals, one bad event each.
+- 01:00 to 01:25, six incident intervals, 220 bad events each (11 percent
