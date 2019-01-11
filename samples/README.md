@@ -21,3 +21,7 @@ to exercise the full accounting path:
 - 01:30 to 01:55, six recovery intervals, 30 bad events each, tapering.
 - 02:00 to 03:55, twenty four healthy intervals, one bad event each.
 
+Totals: 96000 events, 1536 bad. Against a 98 percent objective the budget is
+1920 events, so the run consumes 80 percent and ends with 20.0 percent
+remaining. Against a 99.9 percent objective the same incident is a fast burn
+that trips the multi window alert.
