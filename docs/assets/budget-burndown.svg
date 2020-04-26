@@ -2,3 +2,6 @@
 <!--
   Colours derived from the subject: a burndown of error budget.
   ink #1f2933 for text and axes (neutral), track #2f6f4f green for budget still
+  held (safe), accent #c0392b red used once for the incident band and the final
+  marker, the single thing the reader should look at. Two cores plus one accent.
+  Flat fills only. No gradients, no blur, no glow, no grid paper.
