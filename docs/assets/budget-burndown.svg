@@ -5,3 +5,7 @@
   held (safe), accent #c0392b red used once for the incident band and the final
   marker, the single thing the reader should look at. Two cores plus one accent.
   Flat fills only. No gradients, no blur, no glow, no grid paper.
+-->
+<title id="t">slobudget error budget burndown for service-a</title>
+<desc id="d">Remaining error budget as a share of a 98 percent objective over a four hour window with five minute intervals. The line holds near 100 percent for the first hour, drops sharply from 99.38 percent to 30.63 percent during a thirty minute incident, tapers during recovery, and ends at 20.0 percent remaining.</desc>
+<rect x="0" y="0" width="640" height="320" fill="#ffffff"/>
