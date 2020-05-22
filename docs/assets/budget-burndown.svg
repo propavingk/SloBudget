@@ -12,3 +12,6 @@
 <!-- incident band, accent used once as a region highlight -->
 <rect x="204.77" y="48" width="55.32" height="208" fill="#f7e2df"/>
 <!-- axes -->
+<line x1="72" y1="48" x2="72" y2="256" stroke="#1f2933" stroke-width="1"/>
+<line x1="72" y1="256" x2="592" y2="256" stroke="#1f2933" stroke-width="1"/>
+<line x1="72" y1="48.00" x2="592" y2="48.00" stroke="#d7dde2" stroke-width="1"/>
