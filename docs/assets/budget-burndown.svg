@@ -29,3 +29,6 @@
 <line x1="204.77" y1="256" x2="204.77" y2="260" stroke="#1f2933" stroke-width="1"/>
 <text x="204.77" y="274" text-anchor="middle" font-family="-apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#1f2933">01:00</text>
 <line x1="337.53" y1="256" x2="337.53" y2="260" stroke="#1f2933" stroke-width="1"/>
+<text x="337.53" y="274" text-anchor="middle" font-family="-apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#1f2933">02:00</text>
+<line x1="470.30" y1="256" x2="470.30" y2="260" stroke="#1f2933" stroke-width="1"/>
+<text x="470.30" y="274" text-anchor="middle" font-family="-apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#1f2933">03:00</text>
