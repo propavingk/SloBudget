@@ -85,3 +85,21 @@ class ProjectionTests(unittest.TestCase):
         self.assertFalse(proj.can_project)
         self.assertIn("zero", proj.reason)
 
+    def test_refuses_on_incomplete_window(self):
+        obj = Objective(target=0.99, window_seconds=30 * 86400)
+        status = derive_budget(obj, GAPPED.total_events, GAPPED.total_bad)
+        stats = window_stats(GAPPED, GAPPED.span_seconds())
+        proj = project_exhaustion(obj, stats, status.remaining_events)
+        self.assertFalse(proj.can_project)
+        self.assertIn("incomplete", proj.reason)
+
+    def test_refuses_when_already_exhausted(self):
+        obj = Objective(target=0.999, window_seconds=30 * 86400)
+        # force exhaustion with a tiny budget
+        stats = window_stats(STEADY, STEADY.window_seconds)
+        proj = project_exhaustion(obj, stats, remaining_events=-5.0)
+        self.assertFalse(proj.can_project)
+        self.assertIn("exhausted", proj.reason)
+
+
+if __name__ == "__main__":
