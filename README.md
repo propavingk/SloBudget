@@ -452,4 +452,4 @@ Not promises, and not dated:
 
 MIT. See [LICENSE](LICENSE).
 
-<!-- draft note 797 -->
+<!-- draft note 798 -->
