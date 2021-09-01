@@ -86,3 +86,21 @@ def render_alerts(evaluations: list[AlertEvaluation]) -> list[str]:
     """Render the multi-window alert evaluation report."""
     lines: list[str] = []
     lines.append("multi-window burn rate alerts")
+    for ev in evaluations:
+        p = ev.policy
+        lines.append(f"  policy {p.name}")
+        lines.append(
+            f"    long {p.long_seconds}s short {p.short_seconds}s "
+            f"threshold {p.threshold} burns {_pct(p.budget_fraction)} of budget"
+        )
+        if ev.skipped:
+            lines.append(f"    result             skipped, {ev.reason}")
+            continue
+        if ev.fired:
+            lines.append("    result             FIRED")
+            lines.append(f"    first fired at     {ev.fired_at.isoformat()}")
+            lines.append(f"    long window rate   {ev.long_rate:.3f}")
+            lines.append(f"    short window rate  {ev.short_rate:.3f}")
+        else:
+            lines.append("    result             did not fire")
+            lines.append(f"    reason             {ev.reason}")
