@@ -25,3 +25,9 @@ Totals: 96000 events, 1536 bad. Against a 98 percent objective the budget is
 1920 events, so the run consumes 80 percent and ends with 20.0 percent
 remaining. Against a 99.9 percent objective the same incident is a fast burn
 that trips the multi window alert.
+
+## service-b-gap.sli
+
+Twelve healthy intervals at five minute steps with a deliberate thirty minute
+gap in the middle, between 00:30:00Z and 01:00:00Z. Six interval slots are
+missing. It exists to prove that the gap detector reports the discontinuity and
