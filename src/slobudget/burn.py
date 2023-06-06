@@ -168,3 +168,27 @@ def project_exhaustion(
         )
     if not stats.complete:
         return Projection(
+            can_project=False,
+            burn_rate=rate,
+            remaining_events=remaining_events,
+            seconds_to_exhaustion=None,
+            reason="window is incomplete: " + stats.reason,
+        )
+
+    bad_per_second = stats.bad / stats.seconds
+    if bad_per_second <= 0.0:
+        return Projection(
+            can_project=False,
+            burn_rate=rate,
+            remaining_events=remaining_events,
+            seconds_to_exhaustion=None,
+            reason="no bad events observed in the window, cannot project",
+        )
+
+    seconds = remaining_events / bad_per_second
+    return Projection(
+        can_project=True,
+        burn_rate=rate,
+        remaining_events=remaining_events,
+        seconds_to_exhaustion=seconds,
+        reason="projection assumes the current window rate continues unchanged",
