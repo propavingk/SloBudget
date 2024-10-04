@@ -58,3 +58,18 @@ class BurnCommandTests(unittest.TestCase):
 class AlertsCommandTests(unittest.TestCase):
     def test_alerts_fire_exit_one(self):
         code, out, _ = run(
+            ["alerts", "samples/service-a.sli", "-o", "99.9", "-w", "30d"]
+        )
+        self.assertEqual(code, 1)
+        self.assertIn("FIRED", out)
+
+
+class ErrorTests(unittest.TestCase):
+    def test_missing_file_exit_two(self):
+        code, _, err = run(["budget", "samples/does-not-exist.sli"])
+        self.assertEqual(code, 2)
+        self.assertIn("error:", err)
+
+
+if __name__ == "__main__":
+    unittest.main()
