@@ -78,3 +78,21 @@ class DeriveBudgetTests(unittest.TestCase):
         self.assertAlmostEqual(status.budget_events, 1920.0)
         self.assertAlmostEqual(status.consumed_fraction, 0.8)
         self.assertAlmostEqual(status.remaining_fraction, 0.2)
+        self.assertFalse(status.exhausted)
+
+    def test_exhausted(self):
+        obj = Objective(target=0.999, window_seconds=30 * 86400)
+        status = derive_budget(obj, total_events=96000, bad_events=1536)
+        self.assertTrue(status.exhausted)
+        self.assertLess(status.remaining_events, 0)
+        self.assertEqual(status.remaining_fraction, 0.0)
+
+    def test_no_failures(self):
+        obj = Objective(target=0.99, window_seconds=86400)
+        status = derive_budget(obj, total_events=1000, bad_events=0)
+        self.assertEqual(status.consumed_fraction, 0.0)
+        self.assertEqual(status.remaining_fraction, 1.0)
+
+
+if __name__ == "__main__":
+    unittest.main()
