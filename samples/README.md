@@ -31,3 +31,4 @@ that trips the multi window alert.
 Twelve healthy intervals at five minute steps with a deliberate thirty minute
 gap in the middle, between 00:30:00Z and 01:00:00Z. Six interval slots are
 missing. It exists to prove that the gap detector reports the discontinuity and
+that the projection refuses to run when a gap falls inside the window.
