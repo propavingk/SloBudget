@@ -450,3 +450,6 @@ Not promises, and not dated:
 
 ## License
 
+MIT. See [LICENSE](LICENSE).
+
+<!-- draft note 1405 -->
