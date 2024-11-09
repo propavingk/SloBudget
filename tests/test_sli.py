@@ -89,3 +89,22 @@ class ValidationTests(unittest.TestCase):
 
     def test_rejects_empty(self):
         with self.assertRaises(SliError):
+            parse_series("# only a comment\n")
+
+    def test_rejects_duplicate_timestamp(self):
+        text = "2026-03-01T00:00:00Z,1,2\n2026-03-01T00:00:00Z,1,2\n"
+        with self.assertRaises(SliError):
+            parse_series(text)
+
+    def test_rejects_non_multiple_step(self):
+        text = (
+            "2026-03-01T00:00:00Z,1,2\n"
+            "2026-03-01T00:05:00Z,1,2\n"
+            "2026-03-01T00:12:00Z,1,2\n"  # 420s, not a multiple of 300
+        )
+        with self.assertRaises(SliError):
+            parse_series(text)
+
+
+if __name__ == "__main__":
+    unittest.main()
