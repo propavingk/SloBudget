@@ -50,3 +50,16 @@ class EvaluateTests(unittest.TestCase):
             + "\n"
         )
         policy = AlertPolicy(
+            name="fast-burn",
+            long_seconds=3600,
+            short_seconds=300,
+            threshold=14.4,
+            budget_fraction=0.02,
+        )
+        ev = evaluate_policy(clean, self.objective, policy)
+        self.assertFalse(ev.fired)
+        self.assertFalse(ev.skipped)
+
+
+if __name__ == "__main__":
+    unittest.main()
