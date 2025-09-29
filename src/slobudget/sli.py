@@ -168,3 +168,28 @@ def parse_series(text: str) -> Series:
     if interval_seconds <= 0:
         raise SliError("interval length inferred as non positive")
 
+    gaps: list[Gap] = []
+    for a, b in zip(rows, rows[1:]):
+        step = int((b.start - a.start).total_seconds())
+        if step % interval_seconds != 0:
+            raise SliError(
+                f"interval between {a.start.isoformat()} and {b.start.isoformat()} "
+                f"({step}s) is not a multiple of {interval_seconds}s"
+            )
+        slots = step // interval_seconds
+        if slots > 1:
+            gaps.append(
+                Gap(after=a.start, before=b.start, missing=slots - 1)
+            )
+
+    return Series(
+        interval_seconds=interval_seconds,
+        intervals=tuple(rows),
+        gaps=tuple(gaps),
+    )
+
+
+def load_series(path: str) -> Series:
+    """Read and parse an indicator series from a file path."""
+    with open(path, "r", encoding="utf-8") as handle:
+        return parse_series(handle.read())
