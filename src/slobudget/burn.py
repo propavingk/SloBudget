@@ -192,3 +192,4 @@ def project_exhaustion(
         remaining_events=remaining_events,
         seconds_to_exhaustion=seconds,
         reason="projection assumes the current window rate continues unchanged",
+    )
