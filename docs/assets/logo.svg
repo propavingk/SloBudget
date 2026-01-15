@@ -14,3 +14,9 @@
 <tspan fill="#2f6f4f">slo</tspan><tspan fill="#1f2933">budget</tspan>
 </text>
 <!-- error budget bar: 80 percent held (green), 20 percent spent (red accent) -->
+<rect x="24" y="144" width="153.6" height="12" rx="3" fill="#2f6f4f"/>
+<rect x="177.6" y="144" width="38.4" height="12" rx="3" fill="#c0392b"/>
+<text x="24" y="184" font-family="&quot;Cascadia Mono&quot;, &quot;JetBrains Mono&quot;, Consolas, &quot;DejaVu Sans Mono&quot;, monospace" font-size="12" fill="#1f2933">error budget accounting</text>
+</svg>
+
+<!-- draft note 1745 -->
