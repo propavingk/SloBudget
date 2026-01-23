@@ -154,3 +154,32 @@ class BudgetStatus:
     def remaining_fraction(self) -> float:
         """Fraction of the budget still available, clamped at zero below."""
         if self.budget_events <= 0.0:
+            return 0.0
+        value = self.remaining_events / self.budget_events
+        return value if value > 0.0 else 0.0
+
+
+def derive_budget(objective: Objective, total_events: int, bad_events: int) -> BudgetStatus:
+    """Compute budget accounting for observed totals against an objective.
+
+    The budget is sized to the events actually observed, which is the honest
+    denominator when you do not know the future traffic. bad_events beyond the
+    budget drives consumed_fraction above 1.0 and remaining_events below zero.
+    """
+    budget = objective.budget_events(total_events)
+    if budget <= 0.0:
+        consumed = 0.0 if bad_events == 0 else float("inf")
+        remaining = -float(bad_events)
+    else:
+        consumed = bad_events / budget
+        remaining = budget - bad_events
+    return BudgetStatus(
+        objective=objective,
+        total_events=total_events,
+        bad_events=bad_events,
+        budget_events=budget,
+        consumed_fraction=consumed,
+        remaining_events=remaining,
+    )
+
+# draft note 1747
