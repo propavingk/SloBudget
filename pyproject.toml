@@ -24,3 +24,10 @@ slobudget = "slobudget.cli:main"
 where = ["src"]
 
 [tool.setuptools.package-dir]
+"" = "src"
+
+[project.urls]
+Homepage = "https://github.com/propavingk/SloBudget"
+Source = "https://github.com/propavingk/SloBudget"
+
+<!-- draft note 1749 -->
