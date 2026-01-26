@@ -69,3 +69,17 @@ Changelog, and the project uses semantic versioning.
 ### Added
 
 - Burn rate computation over a rolling window.
+
+## [0.2.0] - 2014-10-07
+
+### Added
+
+- Objective model and error budget arithmetic.
+
+## [0.1.0] - 2013-07-02
+
+### Added
+
+- Initial SLI reader and a single burn entry point.
+
+<!-- draft note 1748 -->
