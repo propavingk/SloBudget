@@ -191,5 +191,3 @@ def evaluate_all(
 def any_fired(evaluations: list[AlertEvaluation]) -> bool:
     """True when at least one policy fired."""
     return any(e.fired for e in evaluations)
-
-# draft note 1765
