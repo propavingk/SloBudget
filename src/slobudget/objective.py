@@ -181,5 +181,3 @@ def derive_budget(objective: Objective, total_events: int, bad_events: int) -> B
         consumed_fraction=consumed,
         remaining_events=remaining,
     )
-
-# draft note 1747
