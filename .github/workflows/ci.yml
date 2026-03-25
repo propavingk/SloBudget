@@ -21,4 +21,4 @@ jobs:
           PYTHONPATH: src
         run: python -m slobudget version
 
-# draft note 1774
+# draft note 1779
