@@ -104,3 +104,4 @@ def render_alerts(evaluations: list[AlertEvaluation]) -> list[str]:
         else:
             lines.append("    result             did not fire")
             lines.append(f"    reason             {ev.reason}")
+    return lines
