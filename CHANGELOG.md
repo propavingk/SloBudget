@@ -81,5 +81,3 @@ Changelog, and the project uses semantic versioning.
 ### Added
 
 - Initial SLI reader and a single burn entry point.
-
-<!-- draft note 1781 -->
