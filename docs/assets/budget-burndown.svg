@@ -43,5 +43,3 @@
 <text x="16" y="152.00" transform="rotate(-90 16 152.00)" text-anchor="middle" font-family="-apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#1f2933">budget remaining</text>
 <text x="332.00" y="314" text-anchor="middle" font-family="-apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#1f2933">time (UTC, 5m intervals)</text>
 </svg>
-
-<!-- draft note 1772 -->
