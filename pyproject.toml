@@ -29,5 +29,3 @@ where = ["src"]
 [project.urls]
 Homepage = "https://github.com/propavingk/SloBudget"
 Source = "https://github.com/propavingk/SloBudget"
-
-<!-- draft note 1782 -->
