@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Palette reason: the subject is the error budget bar itself. Track green lifted
+  to #4ec38a carries the held budget and the "slo" half of the wordmark. Ink
+  lifted to #e6edf3 carries the structural text. The single accent, red lifted
+  to #e5534b, appears once on the spent segment of the bar, the thing the
+  reader should read first.
+  Contrast on #0d1117: ink 14.6:1, green 9.4:1, red 5.2:1, muted 6.3:1.
+  Grid: every edge and baseline on a multiple of 4. No glow, no blur, no
+  gradients as decoration. Motion: none.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 360" role="img"
+     aria-labelledby="bannerTitle bannerDesc" width="1400" height="360">
+  <title id="bannerTitle">SloBudget banner</title>
+  <desc id="bannerDesc">SloBudget, an error budget tracker for SLI files. A card
+    shows an error budget bar that is mostly held in green with a small spent
+    segment in red, next to burn rate readings.</desc>
+
+  <rect x="0" y="0" width="1400" height="360" rx="16" fill="#0d1117" stroke="#30363d" stroke-width="1.5"/>
+
+  <text x="64" y="120" font-family="-apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif" font-size="68" font-weight="700"><tspan fill="#4ec38a">slo</tspan><tspan fill="#e6edf3">budget</tspan></text>
+
+  <text x="64" y="168" font-family="-apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif" font-size="26" fill="#e6edf3">Error budget tracker for SLI files</text>
+  <text x="64" y="200" font-family="-apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif" font-size="17" fill="#8b949e">Burn rate windows. Alert thresholds. Deterministic reports.</text>
+
+  <rect x="64" y="248" width="104" height="36" rx="6" fill="none" stroke="#30363d" stroke-width="1.5"/>
+  <text x="116" y="271" text-anchor="middle" font-family="&quot;Cascadia Mono&quot;, Consolas, monospace" font-size="15" fill="#8b949e">v1.0.1</text>
+  <rect x="184" y="248" width="80" height="36" rx="6" fill="none" stroke="#30363d" stroke-width="1.5"/>
+  <text x="224" y="271" text-anchor="middle" font-family="&quot;Cascadia Mono&quot;, Consolas, monospace" font-size="15" fill="#8b949e">MIT</text>
+  <rect x="280" y="248" width="168" height="36" rx="6" fill="none" stroke="#30363d" stroke-width="1.5"/>
+  <text x="364" y="271" text-anchor="middle" font-family="&quot;Cascadia Mono&quot;, Consolas, monospace" font-size="15" fill="#8b949e">Python 3.11+</text>
+
+  <rect x="800" y="56" width="536" height="248" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <text x="832" y="96" font-family="&quot;Cascadia Mono&quot;, Consolas, monospace" font-size="16" fill="#8b949e">error budget</text>
+  <line x1="832" y1="112" x2="1304" y2="112" stroke="#30363d" stroke-width="1"/>
+
+  <rect x="832" y="144" width="336" height="24" rx="6" fill="#4ec38a"/>
+  <rect x="1168" y="144" width="136" height="24" rx="6" fill="#e5534b"/>
+  <text x="832" y="196" font-family="-apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif" font-size="15" fill="#8b949e">held 4240 of 5000 events</text>
+  <text x="1168" y="196" font-family="-apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif" font-size="15" fill="#8b949e">spent 760</text>
+
+  <text x="832" y="244" font-family="&quot;Cascadia Mono&quot;, Consolas, monospace" font-size="16" fill="#e6edf3">burn(1h) 2.4x   burn(6h) 1.1x</text>
+  <text x="832" y="280" font-family="&quot;Cascadia Mono&quot;, Consolas, monospace" font-size="16" fill="#e6edf3">budget left 61 percent, fast burn alert</text>
+</svg>

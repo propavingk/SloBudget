@@ -1,4 +1,11 @@
+<div align="center">
+
+<img src="docs/assets/banner.svg" width="100%"
+     alt="SloBudget banner: error budget tracker for SLI files, with an error budget bar mostly held in green and a small spent segment in red." />
+
 # SloBudget
+
+</div>
 
 <blockquote align="center">
 
