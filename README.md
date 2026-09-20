@@ -31,10 +31,6 @@ budget the incident cost and whether the paging alert should have fired. It
 answers from the recorded numbers, and it refuses to answer when the data does
 not support an answer.
 
-<img src="docs/assets/logo.svg" alt="SloBudget wordmark with slo in green and budget in dark ink above an error budget bar that is mostly green with a small red spent segment" width="240" align="left" />
-
-<br clear="left"/>
-
 SloBudget is Python 3.11 and the standard library only. No third party runtime
 dependencies, no network access, no wall-clock reads in its output. Given the
 same input bytes it prints byte identical output, so two runs diff cleanly in
