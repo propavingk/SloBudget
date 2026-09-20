@@ -8,6 +8,7 @@ Changelog, and the project uses semantic versioning.
 ### Changed
 
 - Alert wording for the burn-rate windows is under review.
+- A per-window legend for the burndown view is being sketched.
 
 ## [1.0.1] - 2026-07-08
 
